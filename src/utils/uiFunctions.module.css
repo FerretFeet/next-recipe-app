@@ -1,0 +1,28 @@
+.tag {
+  background-color: var(--color-sec);
+  list-style: none;
+  width: fit-content;
+  padding: 0.25rem 0.5rem;
+  display: in-line;
+  border-radius: var(--border-radius);
+}
+
+.infoItem {
+  display: flex;
+  gap: 0.25rem;
+  width: 40%;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.infoIcon {
+  margin-left: 0.25rem;
+  align-self: center;
+  justify-self: center;
+  display: inline-block;
+}
+
+.infoItemTxt {
+  margin-left: 0.25rem;
+}

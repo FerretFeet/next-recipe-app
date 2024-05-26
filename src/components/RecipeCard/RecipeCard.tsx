@@ -1,0 +1,64 @@
+import { toTitleCase } from "@/utils/functions";
+import { IRecipe, ITag } from "@/utils/interfaces";
+import Image from "next/image";
+import styles from "./RecipeCard.module.css";
+import { oleoScript } from "../../../fonts";
+import { ReactElement } from "react";
+import { createIconText, createTags } from "@/utils/uiFunctions";
+
+export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
+  const {
+    id,
+    recipe_name,
+    user_name,
+    user_id,
+    description,
+    prep_time,
+    cook_time,
+    serving_size,
+    rating,
+    tags,
+    img,
+  } = recipe;
+  const fullCookTime = prep_time + cook_time;
+
+  return (
+    <div className={styles.container}>
+      <div className={`${styles.card}`}>
+        <div className={styles.imgContainer}>
+          {img ? (
+            <Image
+              src={img}
+              alt={`A photo of ${recipe_name}`}
+              fill={true}
+            />
+          ) : (
+            <div
+              style={{ width: 300, height: 170, background: "#000000" }}
+            ></div>
+          )}
+        </div>
+        <div className={styles.heading}>
+          <h6 className={`${oleoScript.className}`}>
+            {toTitleCase(recipe_name)}
+          </h6>
+        </div>
+        <div className="">
+          <ul className={styles.tagsContainer}>
+            {tags ? createTags(recipe_name, tags) : <div></div>}
+          </ul>
+        </div>
+        <div className={styles.description}>
+          <p className="">{description}</p>
+        </div>
+        <div className={styles.iconText}>
+          {/* MATERIAL UI? ICON LIBRARY NEEDED */}
+          {createIconText("user.svg", user_name)}
+          {createIconText("star.svg", `${rating.toString()}/5`)}
+          {createIconText("fullCook.svg", `${fullCookTime.toString()} mins`)}
+          {createIconText("plate.svg", `${serving_size.toString()} servings`)}
+        </div>
+      </div>
+    </div>
+  );
+}
