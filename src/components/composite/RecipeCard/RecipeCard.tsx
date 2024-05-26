@@ -2,7 +2,7 @@ import { toTitleCase } from "@/utils/functions";
 import { IRecipe, ITag } from "@/utils/interfaces";
 import Image from "next/image";
 import styles from "./RecipeCard.module.css";
-import { oleoScript } from "../../../fonts";
+import { oleoScript } from "@/fonts";
 import { ReactElement } from "react";
 import { createIconText, createTags } from "@/utils/uiFunctions";
 

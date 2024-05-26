@@ -1,5 +1,5 @@
 import { useState } from "react";
-import HamburgerIcon from "../HamburgerMenu/HamburgerIcon";
+import HamburgerIcon from "../../base/HamburgerMenu/HamburgerIcon";
 import styles from "./SiteHeader.module.css";
 
 export function SiteHeader({ links }: { links: string[] }) {
@@ -12,7 +12,7 @@ export function SiteHeader({ links }: { links: string[] }) {
   //   };
 
   return (
-    <div className={styles.hamburgerMenu}>
+    <header className={styles.hamburgerMenu}>
       <div className={styles.logo}>
         <h5>Grocery App</h5>
       </div>
@@ -24,7 +24,7 @@ export function SiteHeader({ links }: { links: string[] }) {
         </nav>
       </div>
       <div className={styles.basket}>{/* button */}</div>
-    </div>
+    </header>
   );
 
   //   return (

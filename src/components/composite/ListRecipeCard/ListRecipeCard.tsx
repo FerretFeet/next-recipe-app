@@ -2,7 +2,6 @@ import { IRecipe } from "@/utils/interfaces";
 import { createIconText, createTags } from "@/utils/uiFunctions";
 import Image from "next/image";
 import styles from "./ListRecipeCard.module.css";
-import { oleoScript } from "../../../fonts";
 
 export function ListrecipeCard({ recipe }: { recipe: IRecipe }) {
   const {
@@ -22,7 +21,7 @@ export function ListrecipeCard({ recipe }: { recipe: IRecipe }) {
 
   return (
     <div className={styles.container}>
-      <div className={`${styles.top} ${oleoScript.className}`}>
+      <div className={`${styles.top}`}>
         <h6>{recipe_name}</h6>
       </div>
       <div className={styles.middle}>

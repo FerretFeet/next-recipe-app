@@ -1,0 +1,63 @@
+/* .container {
+  height: 3000px;
+} */
+
+.hero {
+  position: relative;
+  width: fit-content;
+}
+
+.hImg > * {
+  filter: brightness(50%) contrast(50%) saturate(150%);
+}
+
+.hText {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  /* opacity: 0; */
+  /* filter: invert(1) grayscale(1);
+  mix-blend-mode: difference; */
+  color: var(--color-white);
+}
+
+.hText > h1 {
+  font-size: 2.441rem;
+}
+
+.hText > p {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.hText > * {
+  color: inherit;
+  padding: 0.5rem;
+}
+
+.explainer {
+  /* text-align: center; */
+  margin: auto;
+  padding: 1rem;
+  padding-top: 2rem;
+}
+
+.explanation {
+  list-style: disc outside;
+  text-align: left;
+  padding: 1rem 0 1rem 1.5rem;
+}
+
+.explanation > li {
+  margin-top: 1rem;
+}
+
+.featuredRecipes {
+  height: auto;
+}
