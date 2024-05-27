@@ -7,7 +7,7 @@
   left: 0;
   right: 0;
   margin: auto;
-  transition: 0.4s ease;
+  transition: 0.6s ease;
   width: 80%;
   max-width: var(--max-width);
 }
