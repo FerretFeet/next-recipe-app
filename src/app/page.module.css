@@ -61,3 +61,7 @@
 .featuredRecipes {
   height: auto;
 }
+
+.carouselContainer {
+  position: relative;
+}

@@ -23,7 +23,7 @@ export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
   const fullCookTime = prep_time + cook_time;
 
   return (
-    <div className={styles.container}>
+    <div className={`${styles.container}`}>
       <div className={`${styles.card}`}>
         <div className={styles.imgContainer}>
           {img ? (
@@ -33,9 +33,7 @@ export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
               fill={true}
             />
           ) : (
-            <div
-              style={{ width: 300, height: 170, background: "#000000" }}
-            ></div>
+            <div></div>
           )}
         </div>
         <div className={styles.heading}>

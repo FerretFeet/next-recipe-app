@@ -5,6 +5,7 @@ import { ListrecipeCard } from "@/components/composite/ListRecipeCard/ListRecipe
 import { SiteHeader } from "@/components/framework/SiteHeader/SiteHeader";
 import { alegreya } from "@/fonts";
 import Carousel from "@/components/framework/Carousel/Carousel";
+import RecipeCard from "@/components/composite/RecipeCard/RecipeCard";
 
 export default function Home() {
   let testLinks: string[] = ["home", "about"];
@@ -47,9 +48,13 @@ export default function Home() {
         </ol>
       </section>
       <section aria-label="Featured recipes">
-        <Carousel />
+        <h3>Featured Recipes:</h3>
+        <div className={styles.carouselWrapper}>
+          <Carousel />
+        </div>
       </section>
       <section aria-label="All recipes">
+        <h1 className="">Search</h1>
         {/* SEARCH BAR */}
         {/* SEARCH PAGE */}
       </section>

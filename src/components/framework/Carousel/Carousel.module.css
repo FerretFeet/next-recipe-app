@@ -1,0 +1,19 @@
+.container {
+  position: relative;
+}
+
+.card {
+  /* position: absolute; */
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: 0.4s ease;
+  width: 80%;
+  max-width: var(--max-width);
+}
+
+@media screen and (min-width: 900px) {
+  .container {
+    height: 440px;
+  }
+}
