@@ -1,18 +1,18 @@
 export interface IIngredient {
   id?: number;
-  ingr_name: string;
+  name: string;
   quantity: number;
   unit: string;
 }
 
 export interface ITag {
-  id: number;
-  tag_name: string;
+  id?: number;
+  name: string;
 }
 
 export interface IRecipe {
   id?: number;
-  recipe_name: string;
+  name: string;
   user_id: number;
   user_name: string;
   description: string;
@@ -27,52 +27,47 @@ export interface IRecipe {
 }
 
 export const testRecipe: IRecipe = {
-  recipe_name: "My Delicious Recipe",
+  name: "My Delicious Recipe",
   user_id: 1,
   user_name: "John Doe",
   description:
     "A short description of the recipeA short description of the recipeA short description of the recipeA short description of the recipeA short description of the recipe",
-  instructions: "Step-by-step instructions for cooking the recipe",
+  instructions:
+    "Step-by-step instructions for cooking the recipe; step2; srltj3",
   prep_time: 30, // prep time in minutes
   cook_time: 60, // cook time in minutes
   serving_size: 4,
   rating: 4.5,
   ingredients: [
     {
-      ingr_name: "Eggs",
+      name: "Eggs",
       quantity: 2,
       unit: "pcs",
     },
     {
-      ingr_name: "Flour",
+      name: "Flour",
       quantity: 1,
       unit: "cup",
     },
   ],
   tags: [
     {
-      id: 1,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
-      id: 2,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
-      id: 11,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
-      id: 23,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
-      id: 16,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
-      id: 212,
-      tag_name: "Easy",
+      name: "Easy",
     },
   ],
   // Optional image property
@@ -80,7 +75,7 @@ export const testRecipe: IRecipe = {
 };
 
 export const testRecipe1: IRecipe = {
-  recipe_name: "My yummy Recipe",
+  name: "My yummy Recipe",
   user_id: 1,
   user_name: "John Doe",
   description:
@@ -92,12 +87,12 @@ export const testRecipe1: IRecipe = {
   rating: 4.5,
   ingredients: [
     {
-      ingr_name: "Eggs",
+      name: "Eggs",
       quantity: 2,
       unit: "pcs",
     },
     {
-      ingr_name: "Flour",
+      name: "Flour",
       quantity: 1,
       unit: "cup",
     },
@@ -105,34 +100,34 @@ export const testRecipe1: IRecipe = {
   tags: [
     {
       id: 1,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 2,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 11,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 23,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 16,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 212,
-      tag_name: "Easy",
+      name: "Easy",
     },
   ],
   // Optional image property
   img: "/saladtest.jpeg",
 };
 export const testRecipe2: IRecipe = {
-  recipe_name: "My tasty Recipe",
+  name: "My tasty Recipe",
   user_id: 1,
   user_name: "John Doe",
   description:
@@ -144,12 +139,12 @@ export const testRecipe2: IRecipe = {
   rating: 4.5,
   ingredients: [
     {
-      ingr_name: "Eggs",
+      name: "Eggs",
       quantity: 2,
       unit: "pcs",
     },
     {
-      ingr_name: "Flour",
+      name: "Flour",
       quantity: 1,
       unit: "cup",
     },
@@ -157,34 +152,34 @@ export const testRecipe2: IRecipe = {
   tags: [
     {
       id: 1,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 2,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 11,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 23,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 16,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 212,
-      tag_name: "Easy",
+      name: "Easy",
     },
   ],
   // Optional image property
   img: "/saladtest.jpeg",
 };
 export const testRecipe3: IRecipe = {
-  recipe_name: "My yucky Recipe",
+  name: "My yucky Recipe",
   user_id: 1,
   user_name: "John Doe",
   description:
@@ -196,12 +191,12 @@ export const testRecipe3: IRecipe = {
   rating: 4.5,
   ingredients: [
     {
-      ingr_name: "Eggs",
+      name: "Eggs",
       quantity: 2,
       unit: "pcs",
     },
     {
-      ingr_name: "Flour",
+      name: "Flour",
       quantity: 1,
       unit: "cup",
     },
@@ -209,34 +204,34 @@ export const testRecipe3: IRecipe = {
   tags: [
     {
       id: 1,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 2,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 11,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 23,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 16,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 212,
-      tag_name: "Easy",
+      name: "Easy",
     },
   ],
   // Optional image property
   img: "/saladtest.jpeg",
 };
 export const testRecipe4: IRecipe = {
-  recipe_name: "My Other Recipe",
+  name: "My Other Recipe",
   user_id: 1,
   user_name: "John Doe",
   description:
@@ -248,12 +243,12 @@ export const testRecipe4: IRecipe = {
   rating: 4.5,
   ingredients: [
     {
-      ingr_name: "Eggs",
+      name: "Eggs",
       quantity: 2,
       unit: "pcs",
     },
     {
-      ingr_name: "Flour",
+      name: "Flour",
       quantity: 1,
       unit: "cup",
     },
@@ -261,27 +256,27 @@ export const testRecipe4: IRecipe = {
   tags: [
     {
       id: 1,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 2,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 11,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 23,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 16,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 212,
-      tag_name: "Easy",
+      name: "Easy",
     },
   ],
   // Optional image property
@@ -289,7 +284,7 @@ export const testRecipe4: IRecipe = {
 };
 
 export const testRecipe5: IRecipe = {
-  recipe_name: "My Final Recipe",
+  name: "My Final Recipe",
   user_id: 1,
   user_name: "John Doe",
   description:
@@ -301,12 +296,12 @@ export const testRecipe5: IRecipe = {
   rating: 4.5,
   ingredients: [
     {
-      ingr_name: "Eggs",
+      name: "Eggs",
       quantity: 2,
       unit: "pcs",
     },
     {
-      ingr_name: "Flour",
+      name: "Flour",
       quantity: 1,
       unit: "cup",
     },
@@ -314,27 +309,27 @@ export const testRecipe5: IRecipe = {
   tags: [
     {
       id: 1,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 2,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 11,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 23,
-      tag_name: "Easy",
+      name: "Easy",
     },
     {
       id: 16,
-      tag_name: "Breakfast",
+      name: "Breakfast",
     },
     {
       id: 212,
-      tag_name: "Easy",
+      name: "Easy",
     },
   ],
   // Optional image property

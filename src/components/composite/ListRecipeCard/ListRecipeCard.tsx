@@ -6,7 +6,7 @@ import styles from "./ListRecipeCard.module.css";
 export function ListrecipeCard({ recipe }: { recipe: IRecipe }) {
   const {
     id,
-    recipe_name,
+    name,
     user_name,
     user_id,
     description,
@@ -22,14 +22,14 @@ export function ListrecipeCard({ recipe }: { recipe: IRecipe }) {
   return (
     <div className={styles.container}>
       <div className={`${styles.top}`}>
-        <h6>{recipe_name}</h6>
+        <h6>{name}</h6>
       </div>
       <div className={styles.middle}>
         <div className={styles.imgContainer}>
           {img ? (
             <Image
               src={img}
-              alt={`A photo of ${recipe_name}`}
+              alt={`A photo of ${name}`}
               fill={true}
             />
           ) : (
@@ -44,7 +44,7 @@ export function ListrecipeCard({ recipe }: { recipe: IRecipe }) {
         </div>
       </div>
       <div className={styles.bottom}>
-        {tags ? createTags(recipe_name, tags) : <div></div>}
+        {tags ? createTags(name, tags) : <div></div>}
       </div>
     </div>
   );

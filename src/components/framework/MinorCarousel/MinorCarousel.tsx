@@ -100,7 +100,7 @@ export function MinorCarousel() {
     <div className={styles.container}>
       {arr.map((item, idx) => (
         <Card
-          key={item.recipe_name + "c"}
+          key={item.name + "c"}
           content={item}
           idx={idx}
           onClick={() => updateArr(idx)}

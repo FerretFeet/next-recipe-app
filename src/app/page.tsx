@@ -53,10 +53,13 @@ export default function Home() {
         <Carousel />
       </section>
       <section aria-label="All recipes">
-        <h1 className="">Search</h1>
+        {/* <h5 className="">Search</h5> */}
         {/* SEARCH BAR */}
         {/* Many Minor Carousels showing categories */}
+        <h5 className={styles.catHeader}>Category</h5>
+
         <MinorCarousel />
+        {/* PAGINATION */}
       </section>
       <footer></footer>
     </main>

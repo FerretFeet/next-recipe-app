@@ -9,7 +9,7 @@ import { createIconText, createTags } from "@/utils/uiFunctions";
 export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
   const {
     id,
-    recipe_name,
+    name,
     user_name,
     user_id,
     description,
@@ -29,7 +29,7 @@ export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
           {img ? (
             <Image
               src={img}
-              alt={`A photo of ${recipe_name}`}
+              alt={`A photo of ${name}`}
               fill={true}
             />
           ) : (
@@ -37,13 +37,11 @@ export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
           )}
         </div>
         <div className={styles.heading}>
-          <h6 className={`${oleoScript.className}`}>
-            {toTitleCase(recipe_name)}
-          </h6>
+          <h6 className={`${oleoScript.className}`}>{toTitleCase(name)}</h6>
         </div>
         <div className="">
           <ul className={styles.tagsContainer}>
-            {tags ? createTags(recipe_name, tags) : <div></div>}
+            {tags ? createTags(name, tags) : <div></div>}
           </ul>
         </div>
         <div className={styles.description}>

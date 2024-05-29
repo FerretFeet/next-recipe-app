@@ -2,7 +2,9 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
+    "seed": "ts-node src/db/dbIinit.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -10,8 +12,10 @@
   },
   "dependencies": {
     "next": "14.2.3",
+    "pg-promise": "^11.7.8",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -62,3 +62,7 @@
   height: auto;
   overflow: hidden;
 }
+
+.catHeader {
+  margin: 1rem;
+}
