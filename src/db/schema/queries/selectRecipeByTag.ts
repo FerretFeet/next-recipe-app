@@ -1,6 +1,10 @@
 import db from "@/db/dbConfig";
 
-async function selectByTag(tagName: string, page: number, limit: number) {
+async function selectByTag(
+  tagName: string,
+  page: number = 1,
+  limit: number = 50
+) {
   // QUERIES
   const query = `
     SELECT r.name, r.id, r.user_id, r.description, r.prep_time, r.cook_time, r.serving_size, t.name

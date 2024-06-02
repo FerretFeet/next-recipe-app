@@ -1,12 +1,12 @@
 import db from "@/db/dbConfig";
 
-export async function RecipeById(id: number) {
+async function RecipeByName(name: string) {
   const recipe = await db.one(
     `
     SELECT * FROM recipe
-    WHERE id = $1
+    WHERE name = $1
     `,
-    [id]
+    [name]
   );
   return recipe;
 }
