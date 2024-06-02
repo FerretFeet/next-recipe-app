@@ -4,6 +4,7 @@ CREATE TABLE IF NOT EXISTS recipe (
     name varchar(32) not null,
     user_id INT not null,
     description TEXT,
+    img TEXT,
     instructions text,
     prep_time int,
     cook_time int,

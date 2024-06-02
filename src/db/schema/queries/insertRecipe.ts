@@ -23,15 +23,21 @@ export async function insertRecipe({
   const insertIntoRecipe = `
     INSERT INTO recipe (name, user_id, description, instructions, prep_time, cook_time, serving_size, img)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-    return *
+    RETURNING id
     `;
 
   const getOrInsertIngr = `
     INSERT INTO ingredient (name)
     VALUES ($1)
     ON CONFLICT (name) DO NOTHING
-    RETURNING id, name
+    RETURNING id
     `;
+
+  const getIngrById = `
+SELECT id
+FROM ingredient
+WHERE name = $1
+  `;
 
   const isRecipeIngr = `
     UPDATE ingredient
@@ -40,7 +46,7 @@ export async function insertRecipe({
     `;
 
   const insertRecipexIngredient = `
-    INSERT INTO recipe_x_ingredient (recipe_id, ingr_id, quantity, unit_name)
+    INSERT INTO recipe_x_ingredient (recipe_id, ingr_id, quantity, unit_id)
     SELECT $1, $2, $3, (SELECT id FROM unit WHERE LOWER(name) = $4)
     `;
   const getOrInsertTag = `
@@ -50,7 +56,7 @@ export async function insertRecipe({
     RETURNING id
   `;
   const insertRecipexTag = `
-    INSERT INTO recipe_x_tags (recipe_id, tag_id)
+    INSERT INTO recipe_x_tag (recipe_id, tag_id)
     SELECT $1, $2
   `;
 
@@ -92,9 +98,13 @@ export async function insertRecipe({
         // @ts-expect-error
         ingredients.forEach(async (ingredient) => {
           // Find or create ingredient and pull id
-          let ingr_id = t.one(getOrInsertIngr, ingredient.name);
+          let ingr_id = await t.any(getIngrById, ingredient.name);
+          if (!ingr_id[0]) {
+            ingr_id[0] = await t.one(getOrInsertIngr, ingredient.name);
+          }
+          ingredient.id = ingr_id[0].id;
+          console.log(`ingr id in INSERT RECIPE ${ingr_id}`);
 
-          ingredient.id = await ingr_id;
           newRecipe.ingredients?.push(ingredient);
 
           //create recipe_x_ingredient entry
@@ -109,8 +119,8 @@ export async function insertRecipe({
         // @ts-expect-error
         tags.forEach(async (tag) => {
           //find or create ingredient and pull id
-          let tag_id = t.one(getOrInsertTag, tag.name);
-          tag.id = await tag_id;
+          let tag_id = await t.one(getOrInsertTag, tag.name);
+          tag.id = tag_id.id;
           newRecipe.tags?.push(tag);
 
           //create recipe_x_tag entry
@@ -127,6 +137,7 @@ export async function insertRecipe({
         console.error("error creating recipe", err);
         throw err;
       }
+      console.log(`successfully ran recipe query for ${newRecipe.name}`);
       return newRecipe;
     });
   } catch (err) {

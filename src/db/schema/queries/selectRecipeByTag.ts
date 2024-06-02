@@ -5,7 +5,7 @@ async function selectByTag(tagName: string, page: number, limit: number) {
   const query = `
     SELECT r.name, r.id, r.user_id, r.description, r.prep_time, r.cook_time, r.serving_size, t.name
     FROM recipe r
-    INNER JOIN recipe_x_tags rt ON r.id = rt.recipe_id
+    INNER JOIN recipe_x_tag rt ON r.id = rt.recipe_id
     INNER JOIN tag t ON rt.tag_id = t.id
     WHERE t.name = $1
     LIMIT $2 OFFSET $3;

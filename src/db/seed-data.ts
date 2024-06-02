@@ -2,7 +2,7 @@ import { IRecipe } from "./interfaces/interfaces";
 
 export const recipe1: IRecipe = {
   name: "Scrambled Eggs",
-  user_id: 2,
+  user_id: 1,
   description: "Classic scrambled eggs for a hearty breakfast.",
   instructions:
     "Beat eggs; Heat skillet; Add eggs to skillet; Scramble until cooked.",
@@ -11,9 +11,9 @@ export const recipe1: IRecipe = {
   serving_size: 2,
   rating: 4.7,
   ingredients: [
-    { name: "Eggs", quantity: 4, unit: "pcs" },
-    { name: "Butter", quantity: 1, unit: "tbsp" },
-    { name: "Salt", quantity: 0.5, unit: "tsp" },
+    { name: "Eggs", quantity: 4, unit: "piece" },
+    { name: "Butter", quantity: 1, unit: "tablespoon" },
+    { name: "Salt", quantity: 0.5, unit: "teaspoon" },
   ],
   tags: [{ name: "Breakfast" }, { name: "Quick" }, { name: "Simple" }],
   img: "@/public/saladtest.jpeg",
@@ -21,7 +21,7 @@ export const recipe1: IRecipe = {
 
 export const recipe2: IRecipe = {
   name: "Pancakes",
-  user_id: 3,
+  user_id: 1,
   description: "Fluffy pancakes perfect for a weekend brunch.",
   instructions:
     "Mix batter; Heat griddle; Pour batter onto griddle; Flip when bubbles form.",
@@ -32,7 +32,7 @@ export const recipe2: IRecipe = {
   ingredients: [
     { name: "Flour", quantity: 1.5, unit: "cup" },
     { name: "Milk", quantity: 1, unit: "cup" },
-    { name: "Eggs", quantity: 2, unit: "pcs" },
+    { name: "Eggs", quantity: 2, unit: "piece" },
   ],
   tags: [{ name: "Breakfast" }, { name: "Brunch" }, { name: "Homemade" }],
   img: "@/public/saladtest.jpeg",
@@ -40,7 +40,7 @@ export const recipe2: IRecipe = {
 
 export const recipe3: IRecipe = {
   name: "Grilled Chicken Salad",
-  user_id: 4,
+  user_id: 1,
   description: "A healthy and delicious salad with grilled chicken.",
   instructions:
     "Marinate chicken; Grill chicken; Chop vegetables; Assemble salad.",
@@ -49,9 +49,9 @@ export const recipe3: IRecipe = {
   serving_size: 4,
   rating: 4.6,
   ingredients: [
-    { name: "Chicken Breast", quantity: 2, unit: "pcs" },
-    { name: "Lettuce", quantity: 1, unit: "head" },
-    { name: "Tomatoes", quantity: 2, unit: "pcs" },
+    { name: "Chicken Breast", quantity: 2, unit: "piece" },
+    { name: "Lettuce", quantity: 1, unit: "piece" },
+    { name: "Tomatoes", quantity: 2, unit: "piece" },
   ],
   tags: [{ name: "Salad" }, { name: "Healthy" }, { name: "Grilled" }],
   img: "@/public/saladtest.jpeg",
@@ -59,7 +59,7 @@ export const recipe3: IRecipe = {
 
 export const recipe4: IRecipe = {
   name: "Spaghetti Carbonara",
-  user_id: 5,
+  user_id: 1,
   description: "A creamy and flavorful pasta dish.",
   instructions:
     "Boil pasta; Cook bacon; Mix eggs and cheese; Combine all ingredients.",
@@ -68,8 +68,8 @@ export const recipe4: IRecipe = {
   serving_size: 4,
   rating: 4.8,
   ingredients: [
-    { name: "Spaghetti", quantity: 8, unit: "oz" },
-    { name: "Bacon", quantity: 4, unit: "slices" },
+    { name: "Spaghetti", quantity: 8, unit: "ounce" },
+    { name: "Bacon", quantity: 4, unit: "piece" },
     { name: "Parmesan Cheese", quantity: 0.5, unit: "cup" },
   ],
   tags: [{ name: "Pasta" }, { name: "Italian" }, { name: "Creamy" }],
@@ -78,7 +78,7 @@ export const recipe4: IRecipe = {
 
 export const recipe5: IRecipe = {
   name: "Banana Bread",
-  user_id: 6,
+  user_id: 1,
   description: "A moist and delicious banana bread recipe.",
   instructions:
     "Mash bananas; Mix wet ingredients; Combine dry ingredients; Bake in oven.",
@@ -87,8 +87,8 @@ export const recipe5: IRecipe = {
   serving_size: 8,
   rating: 4.7,
   ingredients: [
-    { name: "Bananas", quantity: 3, unit: "pcs" },
-    { name: "Flour", quantity: 2, unit: "cups" },
+    { name: "Bananas", quantity: 3, unit: "piece" },
+    { name: "Flour", quantity: 2, unit: "cup" },
     { name: "Sugar", quantity: 0.75, unit: "cup" },
   ],
   tags: [{ name: "Baking" }, { name: "Dessert" }, { name: "Snack" }],
