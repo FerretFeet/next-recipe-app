@@ -3,6 +3,7 @@ export interface IIngredient {
   name: string;
   quantity: number;
   unit: string;
+  recipe_id?: number;
 }
 
 export interface ITag {

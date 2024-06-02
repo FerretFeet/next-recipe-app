@@ -1,6 +1,6 @@
 import db from "./dbConfig";
 import fs from "fs";
-import { insertRecipe } from "./schema/queries/insertRecipe";
+import { insertRecipeWithRelations } from "./schema/queries/insertRecipe";
 import { testRecipes } from "./seed-data";
 import { IRecipe } from "./interfaces/interfaces";
 
@@ -47,7 +47,7 @@ async function executeSqlCreationFiles(sqlPaths: string[]) {
 async function insertSeed(data: IRecipe[]) {
   try {
     for (const datum of data) {
-      const recipe = await insertRecipe(datum);
+      const recipe = await insertRecipeWithRelations(datum);
       console.log(`Added Seed Recipe: ${recipe?.name}`);
     }
   } catch (err) {
