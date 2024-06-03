@@ -2,7 +2,6 @@ import { toTitleCase } from "@/utils/functions";
 import { IRecipe, ITag } from "@/utils/interfaces";
 import Image from "next/image";
 import styles from "./RecipeCard.module.css";
-import { oleoScript } from "@/fonts";
 import { ReactElement } from "react";
 import { createIconText, createTags } from "@/utils/uiFunctions";
 
@@ -37,7 +36,7 @@ export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
           )}
         </div>
         <div className={styles.heading}>
-          <h6 className={`${oleoScript.className}`}>{toTitleCase(name)}</h6>
+          <h6 className={``}>{toTitleCase(name)}</h6>
         </div>
         <div className="">
           <ul className={styles.tagsContainer}>

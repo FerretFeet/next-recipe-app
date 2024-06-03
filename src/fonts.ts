@@ -1,4 +1,4 @@
-import { Oleo_Script, Alegreya, Almarai } from "@next/font/google";
+import { Oleo_Script, Alegreya, Almarai } from "next/font/google";
 
 // FONTS MUST BE ADDED TO HTML CLASS
 
