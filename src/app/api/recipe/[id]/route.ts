@@ -3,6 +3,7 @@ import { RecipeById } from "@/db/schema/queries/selectRecipeById";
 const GET = async () => {
   const res = await RecipeById(2);
   console.log(res);
+
   //   const parsedData = await res.json();
   return Response.json(res);
 };

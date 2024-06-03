@@ -10,6 +10,9 @@ import * as util from "util";
 async function getData() {
   const res = await fetch("http://localhost:3000/api/recipe/2");
 
+  console.log(res);
+  console.log(util.inspect(res, false, null, true));
+
   if (!res.ok) {
     throw new Error("Failed to fetch data");
   }
@@ -23,23 +26,34 @@ export default async function RecipePage({
 }) {
   let testLinks: string[] = ["home", "about"];
   // const recipe = test_recipe;
-  let temp = await getData();
-  const recipe = temp[0];
-  recipe.ingredients = recipe.ingredients.split(";");
+  let recipe_arr = await getData();
+  const recipe = recipe_arr[0];
+  console.log(util.inspect(recipe_arr, false, null, true));
+
+  console.log(util.inspect(recipe, false, null, true));
   recipe.tags = recipe.tags.split(";");
   recipe.instructions = recipe.instructions.split(";");
   // REPLACE DEV ONLY BELOW#######################################
   // ################VVVVVVVVVVVVVVVVVV
   recipe.img = "/";
 
-  // for (let i = 0; i < recipe.ingredients.length; i++) {
-  //   // let ingredient.name : IIngredient = recipe.ingredients[i];
-  //   let ingredient: IIngredient;
-  //   // @ts-expect-error
-  //   ingredient.name = recipe.ingredients[i];
-  //   // @ts-expect-error
-  //   recipe.ingredients[i] = ingredient;
-  // }
+  function parseIngredients(ingredientString: string): IIngredient[] {
+    // Take string of form
+    // 'ingredient_id, name, quantity, unit;repeat,'
+    let temp: IIngredient[];
+    console.log(`${ingredientString} ######### ITEM ITEM`);
+
+    temp = ingredientString.split(";").map((item) => {
+      const [strId, name, strQuantity, unit] = item.split(",");
+      console.log(`${item} ######### ITEM ITEM`);
+      const id = Number(strId);
+      const quantity = Number(strQuantity);
+      return { id, name, quantity, unit };
+    });
+    return temp;
+  }
+
+  recipe.ingredients = parseIngredients(recipe.ingredients);
 
   console.log(util.inspect(recipe, false, null, true));
 
