@@ -1,5 +1,5 @@
 import { SiteHeader } from "@/components/framework/SiteHeader/SiteHeader";
-import { IIngredient, IRecipe, testRecipe } from "@/utils/interfaces";
+import { IIngredient, IRecipe, ITag, testRecipe } from "@/utils/interfaces";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { createIconText, createTags } from "@/utils/uiFunctions";
@@ -8,15 +8,18 @@ import * as util from "util";
 // const test_recipe: IRecipe = testRecipe;
 
 async function getData() {
-  const res = await fetch("http://localhost:3000/api/recipe/2");
+  try {
+    const res = await fetch("http://localhost:3000/api/recipe/2");
+    console.log("RESRES");
+    console.log(util.inspect(res, false, null, true));
 
-  console.log(res);
-  console.log(util.inspect(res, false, null, true));
-
-  if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    if (!res.ok) {
+      throw new Error("Failed to fetch data");
+    }
+    return res.json();
+  } catch (err) {
+    console.error("Error fetching recipeById", err);
   }
-  return res.json();
 }
 
 export default async function RecipePage({
@@ -26,16 +29,17 @@ export default async function RecipePage({
 }) {
   let testLinks: string[] = ["home", "about"];
   // const recipe = test_recipe;
-  let recipe_arr = await getData();
-  const recipe = recipe_arr[0];
-  console.log(util.inspect(recipe_arr, false, null, true));
-
+  let recipe = await getData();
+  // const recipe = recipe_arr[0];
+  console.log("Recipe after await");
   console.log(util.inspect(recipe, false, null, true));
-  recipe.tags = recipe.tags.split(";");
+
+  console.log(typeof recipe.instructions);
   recipe.instructions = recipe.instructions.split(";");
   // REPLACE DEV ONLY BELOW#######################################
   // ################VVVVVVVVVVVVVVVVVV
   recipe.img = "/";
+  recipe.rating = 0;
 
   function parseIngredients(ingredientString: string): IIngredient[] {
     // Take string of form
@@ -53,7 +57,19 @@ export default async function RecipePage({
     return temp;
   }
 
+  function parseTags(tagString: string): ITag[] {
+    let temp: ITag[];
+    temp = tagString.split(";").map((item) => {
+      const [strId, name] = item.split(",");
+      const id = Number(strId);
+      return { id, name };
+    });
+    return temp;
+  }
+
   recipe.ingredients = parseIngredients(recipe.ingredients);
+
+  recipe.tags = parseTags(recipe.tags);
 
   console.log(util.inspect(recipe, false, null, true));
 
@@ -115,8 +131,7 @@ export default async function RecipePage({
 
         <div className={styles.iconText}>
           {/* MATERIAL UI? ICON LIBRARY NEEDED */}
-          {createIconText("user.svg", recipe.user_name)}
-          {recipe.rating ? "" : (recipe.rating = 0)}
+          {createIconText("user.svg", recipe.username)}
           {createIconText("star.svg", `${recipe.rating.toString()}/5`)}
           {createIconText("fullCook.svg", `${fullCookTime.toString()} mins`)}
           {createIconText(
