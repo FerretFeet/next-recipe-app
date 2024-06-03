@@ -1,7 +1,7 @@
 import db from "@/db/dbConfig";
 
 export async function RecipeById(id: number) {
-  const recipe = await db.any(
+  const recipe = await db.one(
     `
   SELECT r.id, r.name, r.description, r.img, r.instructions, r.prep_time, r.cook_time, r.serving_size, r.views, r.adds,
     u.username,

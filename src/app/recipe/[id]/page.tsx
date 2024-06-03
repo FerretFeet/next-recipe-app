@@ -3,12 +3,36 @@ import { IIngredient, IRecipe, testRecipe } from "@/utils/interfaces";
 import styles from "./page.module.css";
 import Image from "next/image";
 import { createIconText, createTags } from "@/utils/uiFunctions";
+import * as util from "util";
 
-const test_recipe: IRecipe = testRecipe;
+// const test_recipe: IRecipe = testRecipe;
 
-export default function RecipePage({ params }: { params: { id: number } }) {
+async function getData() {
+  const res = await fetch("http://localhost:3000/api/recipe/2");
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return res.json();
+}
+
+export default async function RecipePage({
+  params,
+}: {
+  params: { id: number };
+}) {
   let testLinks: string[] = ["home", "about"];
-  const recipe = test_recipe;
+  // const recipe = test_recipe;
+  let temp = await getData();
+  const recipe = temp[0];
+  recipe.ingredients = recipe.ingredients.split(";");
+  recipe.tags = recipe.tags.split(";");
+  recipe.instructions = recipe.instructions.split(";");
+  // REPLACE DEV ONLY BELOW#######################################
+  // ################VVVVVVVVVVVVVVVVVV
+  recipe.img = "/";
+
+  console.log(util.inspect(recipe, false, null, true));
 
   const fullCookTime = recipe.prep_time + recipe.cook_time;
 
@@ -27,12 +51,11 @@ export default function RecipePage({ params }: { params: { id: number } }) {
     );
   };
 
-  const listInstructions = (instructions: string) => {
-    const arr = instructions.split(";");
+  const listInstructions = (instructions: string[]) => {
     return (
       <>
         <ol>
-          {arr.map((el, index) => (
+          {instructions.map((el, index) => (
             <li
               key={index}
               className={styles.instruction}
