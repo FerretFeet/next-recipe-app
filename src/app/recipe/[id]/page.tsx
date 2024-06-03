@@ -7,9 +7,9 @@ import * as util from "util";
 
 // const test_recipe: IRecipe = testRecipe;
 
-async function getData() {
+async function getData(id: number) {
   try {
-    const res = await fetch("http://localhost:3000/api/recipe/2");
+    const res = await fetch(`http://localhost:3000/api/recipe/${id}`);
     console.log("RESRES");
     console.log(util.inspect(res, false, null, true));
 
@@ -28,13 +28,8 @@ export default async function RecipePage({
   params: { id: number };
 }) {
   let testLinks: string[] = ["home", "about"];
-  // const recipe = test_recipe;
-  let recipe = await getData();
-  // const recipe = recipe_arr[0];
-  console.log("Recipe after await");
-  console.log(util.inspect(recipe, false, null, true));
+  let recipe = await getData(params.id);
 
-  console.log(typeof recipe.instructions);
   recipe.instructions = recipe.instructions.split(";");
   // REPLACE DEV ONLY BELOW#######################################
   // ################VVVVVVVVVVVVVVVVVV
@@ -45,11 +40,9 @@ export default async function RecipePage({
     // Take string of form
     // 'ingredient_id, name, quantity, unit;repeat,'
     let temp: IIngredient[];
-    console.log(`${ingredientString} ######### ITEM ITEM`);
 
     temp = ingredientString.split(";").map((item) => {
       const [strId, name, strQuantity, unit] = item.split(",");
-      console.log(`${item} ######### ITEM ITEM`);
       const id = Number(strId);
       const quantity = Number(strQuantity);
       return { id, name, quantity, unit };
