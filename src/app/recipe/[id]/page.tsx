@@ -32,6 +32,15 @@ export default async function RecipePage({
   // ################VVVVVVVVVVVVVVVVVV
   recipe.img = "/";
 
+  // for (let i = 0; i < recipe.ingredients.length; i++) {
+  //   // let ingredient.name : IIngredient = recipe.ingredients[i];
+  //   let ingredient: IIngredient;
+  //   // @ts-expect-error
+  //   ingredient.name = recipe.ingredients[i];
+  //   // @ts-expect-error
+  //   recipe.ingredients[i] = ingredient;
+  // }
+
   console.log(util.inspect(recipe, false, null, true));
 
   const fullCookTime = recipe.prep_time + recipe.cook_time;
