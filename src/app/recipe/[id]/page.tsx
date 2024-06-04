@@ -5,13 +5,9 @@ import Image from "next/image";
 import { createIconText, createTags } from "@/utils/uiFunctions";
 import * as util from "util";
 
-// const test_recipe: IRecipe = testRecipe;
-
 async function getData(id: number) {
   try {
     const res = await fetch(`http://localhost:3000/api/recipe/${id}`);
-    console.log("RESRES");
-    console.log(util.inspect(res, false, null, true));
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");
@@ -27,14 +23,19 @@ export default async function RecipePage({
 }: {
   params: { id: number };
 }) {
-  let testLinks: string[] = ["home", "about"];
   let recipe = await getData(params.id);
+  recipe.ingredients = parseIngredients(recipe.ingredients);
+  recipe.tags = parseTags(recipe.tags);
+  const fullCookTime = recipe.prep_time + recipe.cook_time;
 
   recipe.instructions = recipe.instructions.split(";");
   // REPLACE DEV ONLY BELOW#######################################
   // ################VVVVVVVVVVVVVVVVVV
   recipe.img = "/";
   recipe.rating = 0;
+  let testLinks: string[] = ["home", "about"];
+
+  // Deal With Data
 
   function parseIngredients(ingredientString: string): IIngredient[] {
     // Take string of form
@@ -60,14 +61,7 @@ export default async function RecipePage({
     return temp;
   }
 
-  recipe.ingredients = parseIngredients(recipe.ingredients);
-
-  recipe.tags = parseTags(recipe.tags);
-
-  console.log(util.inspect(recipe, false, null, true));
-
-  const fullCookTime = recipe.prep_time + recipe.cook_time;
-
+  // UI Functions
   const listIngredients = (ingredients: IIngredient[]) => {
     return (
       <>
