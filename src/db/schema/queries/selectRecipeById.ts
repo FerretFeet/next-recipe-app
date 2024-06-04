@@ -2,8 +2,9 @@ import db from "@/db/dbConfig";
 import * as util from "util";
 
 export async function RecipeById(id: number) {
-  const recipe = await db.one(
-    `
+  try {
+    const recipe = await db.oneOrNone(
+      `
   SELECT r.id, r.name, r.description, r.img, r.instructions, r.prep_time, r.cook_time, r.serving_size, r.views, r.adds,
     u.username,
     COALESCE(ingredients.ingredient_list, '') AS ingredients,
@@ -27,7 +28,12 @@ export async function RecipeById(id: number) {
   WHERE r.id = $1
   GROUP BY r.id, u.username, ingredients.ingredient_list, tags.tag_list;
     `,
-    [id]
-  );
-  return recipe;
+      [id]
+    );
+
+    return recipe;
+  } catch (err) {
+    console.error("Error in select by Id", err);
+    throw err;
+  }
 }

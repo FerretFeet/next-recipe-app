@@ -3,6 +3,8 @@ import { NextResponse } from "next/server";
 const GET = async (req: any, { params }: { params: any }) => {
   try {
     const recipe = await RecipeById(params.id);
+    console.log("ROUTE DEBUGGING");
+    console.log(params);
     if (!recipe) {
       return new NextResponse("not found", { status: 404 });
     }

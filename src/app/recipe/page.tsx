@@ -48,7 +48,6 @@ export default function RecipePage() {
   return (
     <>
       <header>
-        <SiteHeader links={testLinks} />
         <h1 className={styles.title}>{recipe.name}</h1>
         <div className={styles.imgContainer}>
           {recipe.img ? "" : (recipe.img = "")}

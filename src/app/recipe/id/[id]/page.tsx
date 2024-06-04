@@ -33,7 +33,6 @@ export default async function RecipePage({
   // ################VVVVVVVVVVVVVVVVVV
   recipe.img = "/";
   recipe.rating = 0;
-  let testLinks: string[] = ["home", "about"];
 
   // Deal With Data
 
@@ -97,7 +96,6 @@ export default async function RecipePage({
   return (
     <>
       <header>
-        <SiteHeader links={testLinks} />
         <h1 className={styles.title}>{recipe.name}</h1>
         <div className={styles.imgContainer}>
           {recipe.img ? "" : (recipe.img = "")}
