@@ -7,6 +7,7 @@ import { alegreya } from "@/fonts";
 import Carousel from "@/components/framework/FeaturedCarousel/FeaturedCarousel";
 import RecipeCard from "@/components/composite/RecipeCard/RecipeCard";
 import { MinorCarousel } from "@/components/framework/MinorCarousel/MinorCarousel";
+import SearchForm from "@/components/composite/SearchForm/SearchForm";
 
 export default function Home() {
   let testLinks: string[] = ["home", "about"];
@@ -52,8 +53,12 @@ export default function Home() {
         <h3>Featured Recipes:</h3>
         <Carousel />
       </section>
-      <section aria-label="All recipes">
-        {/* <h5 className="">Search</h5> */}
+      <section
+        aria-label="More recipes"
+        className={`${styles.moreRecipes}`}
+      >
+        <h5 className="">Search</h5>
+        <SearchForm />
         {/* SEARCH BAR */}
         {/* Many Minor Carousels showing categories */}
         <h5 className={styles.catHeader}>Category</h5>

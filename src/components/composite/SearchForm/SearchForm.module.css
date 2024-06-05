@@ -1,0 +1,19 @@
+.container > form > input {
+  text-transform: capitalize;
+}
+
+.container {
+  background-color: var(--color-sec);
+  padding: 1rem;
+}
+
+.inputTxt {
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+.inputBtn {
+  background-color: var(--color-prim);
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
