@@ -14,8 +14,8 @@
   max-width: var(--max-width);
 }
 
-@media screen and (min-width: 900px) {
+/* @media screen and (min-width: 900px) {
   .container {
     height: 440px;
   }
-}
+} */
