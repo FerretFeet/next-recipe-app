@@ -1,5 +1,8 @@
 "use client";
 
+// !!IMPORTANT
+// Implement: height of container to be height of tallest card
+
 import RecipeCard from "@/components/composite/RecipeCard/RecipeCard";
 import styles from "./FeaturedCarousel.module.css";
 import {
