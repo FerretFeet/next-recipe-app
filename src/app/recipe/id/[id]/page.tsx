@@ -7,7 +7,7 @@ import * as util from "util";
 
 async function getData(id: number) {
   try {
-    const res = await fetch(`http://localhost:3000/api/recipe/${id}`);
+    const res = await fetch(`http://localhost:3000/api/recipe/id/${id}`);
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");
