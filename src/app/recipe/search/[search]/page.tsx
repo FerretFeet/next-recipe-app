@@ -1,3 +1,7 @@
+import { ListrecipeCard } from "@/components/composite/ListRecipeCard/ListRecipeCard";
+import { parseTags } from "@/utils/functions";
+import { IRecipe } from "@/utils/interfaces";
+
 async function getData(search: string) {
   console.log(`GET DATA ${search}`);
   try {
@@ -14,15 +18,39 @@ async function getData(search: string) {
   }
 }
 
-export default async function RecipePage({
+export default async function SearchPage({
   params,
 }: {
   params: { search: string };
 }) {
-  const recipe = await getData(params.search);
-  console.log(`SEARCH PAGE DEBUG`);
-  console.log(recipe);
-  console.log(params);
+  const recipes = await getData(params.search);
+  recipes.forEach((recipe: any) => {
+    recipe.tags ? (recipe.tags = parseTags(recipe.tags)) : "";
+    console.log(recipe);
+  });
+  const createRecipes = (recipes: any[]) => {
+    console.log(`SSSSSSSEARCH PAGE`);
+    return (
+      <>
+        {recipes.map((recipe: any, idx: any) => {
+          const fullCookTime = recipe.prep_time + recipe.cook_time;
 
-  return <div className=""></div>;
+          // REPLACE DEV ONLY BELOW#######################################
+          // ################VVVVVVVVVVVVVVVVVV
+          recipe.img = "/";
+          return (
+            <ListrecipeCard
+              recipe={recipe}
+              key={idx + recipe.name}
+            />
+          );
+        })}
+      </>
+    );
+  };
+  {
+    console.log(createRecipes(recipes));
+  }
+
+  return <div className="">{createRecipes(recipes)}</div>;
 }

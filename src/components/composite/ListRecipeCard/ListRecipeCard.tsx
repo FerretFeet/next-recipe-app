@@ -38,7 +38,7 @@ export function ListrecipeCard({ recipe }: { recipe: IRecipe }) {
         </div>
         <div className={styles.iconText}>
           {createIconText("user.svg", user_name)}
-          {createIconText("star.svg", `${rating.toString()}/5`)}
+          {createIconText("star.svg", `${rating ? rating.toString() : 0}/5`)}
           {createIconText("fullCook.svg", `${fullCookTime.toString()} mins`)}
           {createIconText("plate.svg", `${serving_size.toString()} srvs`)}
         </div>

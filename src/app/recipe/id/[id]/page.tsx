@@ -4,10 +4,11 @@ import styles from "./page.module.css";
 import Image from "next/image";
 import { createIconText, createTags } from "@/utils/uiFunctions";
 import * as util from "util";
+import { parseIngredients, parseTags } from "@/utils/functions";
 
 async function getData(id: number) {
   try {
-    const res = await fetch(`http://localhost:3000/api/recipe/id/${id}`);
+    const res = await fetch(`http://localhost:3000/api/recipe/${id}`);
 
     if (!res.ok) {
       throw new Error("Failed to fetch data");
@@ -33,32 +34,7 @@ export default async function RecipePage({
   // ################VVVVVVVVVVVVVVVVVV
   recipe.img = "/";
   recipe.rating = 0;
-
-  // Deal With Data
-
-  function parseIngredients(ingredientString: string): IIngredient[] {
-    // Take string of form
-    // 'ingredient_id, name, quantity, unit;repeat,'
-    let temp: IIngredient[];
-
-    temp = ingredientString.split(";").map((item) => {
-      const [strId, name, strQuantity, unit] = item.split(",");
-      const id = Number(strId);
-      const quantity = Number(strQuantity);
-      return { id, name, quantity, unit };
-    });
-    return temp;
-  }
-
-  function parseTags(tagString: string): ITag[] {
-    let temp: ITag[];
-    temp = tagString.split(";").map((item) => {
-      const [strId, name] = item.split(",");
-      const id = Number(strId);
-      return { id, name };
-    });
-    return temp;
-  }
+  let testLinks: string[] = ["home", "about"];
 
   // UI Functions
   const listIngredients = (ingredients: IIngredient[]) => {
