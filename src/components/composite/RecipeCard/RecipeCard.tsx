@@ -22,7 +22,10 @@ export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
   const fullCookTime = prep_time + cook_time;
 
   return (
-    <div className={`${styles.container}`}>
+    <a
+      className={`${styles.container}`}
+      href={`http://localhost:3000/recipe/id/${id}`}
+    >
       <div className={`${styles.card}`}>
         <div className={styles.imgContainer}>
           {img ? (
@@ -54,6 +57,6 @@ export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
           {createIconText("plate.svg", `${serving_size.toString()} servings`)}
         </div>
       </div>
-    </div>
+    </a>
   );
 }
