@@ -56,8 +56,12 @@ const Card = ({
       className={styles.card}
       style={{ ...style }}
       onClick={onClick}
+      key={`${idx}-${content.id}`}
     >
-      <ListrecipeCard recipe={content} />
+      <ListrecipeCard
+        recipe={content}
+        key={`${idx}-${content.id}`}
+      />
     </div>
   );
 };
@@ -100,7 +104,7 @@ export function MinorCarousel() {
     <div className={styles.container}>
       {arr.map((item, idx) => (
         <Card
-          key={item.name + "c"}
+          key={`${idx}-${item.id}`}
           content={item}
           idx={idx}
           onClick={() => updateArr(idx)}

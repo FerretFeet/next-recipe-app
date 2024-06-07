@@ -1,6 +1,7 @@
 import { ListrecipeCard } from "@/components/composite/ListRecipeCard/ListRecipeCard";
 import { parseTags } from "@/utils/functions";
 import { IRecipe } from "@/utils/interfaces";
+import styles from "./page.module.css";
 
 async function getData(search: string) {
   console.log(`GET DATA ${search}`);
@@ -31,7 +32,7 @@ export default async function SearchPage({
   const createRecipes = (recipes: any[]) => {
     console.log(`SSSSSSSEARCH PAGE`);
     return (
-      <>
+      <ul>
         {recipes.map((recipe: any, idx: any) => {
           const fullCookTime = recipe.prep_time + recipe.cook_time;
 
@@ -39,13 +40,18 @@ export default async function SearchPage({
           // ################VVVVVVVVVVVVVVVVVV
           recipe.img = "/";
           return (
-            <ListrecipeCard
-              recipe={recipe}
-              key={idx + recipe.name}
-            />
+            <li
+              className={styles.searchItem}
+              key={idx + "searchItem"}
+            >
+              <ListrecipeCard
+                recipe={recipe}
+                key={idx + recipe.name}
+              />
+            </li>
           );
         })}
-      </>
+      </ul>
     );
   };
   {

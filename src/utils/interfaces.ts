@@ -75,6 +75,7 @@ export const testRecipe: IRecipe = {
 };
 
 export const testRecipe1: IRecipe = {
+  id: 55,
   name: "My yummy Recipe",
   user_id: 1,
   user_name: "John Doe",
@@ -127,6 +128,8 @@ export const testRecipe1: IRecipe = {
   img: "/saladtest.jpeg",
 };
 export const testRecipe2: IRecipe = {
+  id: 56,
+
   name: "My tasty Recipe",
   user_id: 1,
   user_name: "John Doe",
@@ -180,6 +183,8 @@ export const testRecipe2: IRecipe = {
 };
 export const testRecipe3: IRecipe = {
   name: "My yucky Recipe",
+  id: 58,
+
   user_id: 1,
   user_name: "John Doe",
   description:
@@ -231,6 +236,7 @@ export const testRecipe3: IRecipe = {
   img: "/saladtest.jpeg",
 };
 export const testRecipe4: IRecipe = {
+  id: 59,
   name: "My Other Recipe",
   user_id: 1,
   user_name: "John Doe",
@@ -284,6 +290,7 @@ export const testRecipe4: IRecipe = {
 };
 
 export const testRecipe5: IRecipe = {
+  id: 60,
   name: "My Final Recipe",
   user_id: 1,
   user_name: "John Doe",

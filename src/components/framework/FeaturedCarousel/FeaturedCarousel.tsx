@@ -81,8 +81,12 @@ const Card = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      key={`${idx}-${content.id}`}
     >
-      <RecipeCard recipe={content} />
+      <RecipeCard
+        key={`${idx}-${content.id}`}
+        recipe={content}
+      />
     </div>
   );
 };
@@ -92,6 +96,7 @@ export default function FeaturedCarousel() {
   const [arr, setArr] = useState(list.slice(0, 3));
   const [rest, setRest] = useState(list.slice(3));
   const [isScrolling, setIsScrolling] = useState(true);
+  let counter = 0;
 
   const updateArr = (idx?: number) => {
     const [a, b, c] = arr;
@@ -127,7 +132,7 @@ export default function FeaturedCarousel() {
     <div className={`${styles.container}`}>
       {arr.map((item, idx) => (
         <Card
-          key={item.name + "c"}
+          key={`${counter}-${item.id}`}
           content={item}
           idx={idx}
           onClick={() => updateArr(idx)}

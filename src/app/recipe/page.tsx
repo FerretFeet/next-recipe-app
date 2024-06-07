@@ -18,7 +18,7 @@ export default function RecipePage() {
         <ul>
           {ingredients.map((ingredient, index) => (
             <li
-              key={index}
+              key={index + ingredient.name}
               className={styles.ingredients}
             >{`${ingredient.quantity} ${ingredient.unit}s of ${ingredient.name}`}</li>
           ))}
@@ -34,7 +34,7 @@ export default function RecipePage() {
         <ol>
           {arr.map((el, index) => (
             <li
-              key={index}
+              key={index + "instruction"}
               className={styles.instruction}
             >
               {el}

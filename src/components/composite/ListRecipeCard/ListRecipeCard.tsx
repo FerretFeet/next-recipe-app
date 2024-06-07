@@ -43,9 +43,9 @@ export function ListrecipeCard({ recipe }: { recipe: IRecipe }) {
           {createIconText("plate.svg", `${serving_size.toString()} srvs`)}
         </div>
       </div>
-      <div className={styles.bottom}>
+      <ul className={styles.bottom}>
         {tags ? createTags(name, tags) : <div></div>}
-      </div>
+      </ul>
     </div>
   );
 }

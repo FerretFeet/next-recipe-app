@@ -5,16 +5,18 @@ import styles from "./uiFunctions.module.css";
 export function createTags(name: string, tags: ITag[]) {
   if (!tags) return <div className=""></div>;
   let temp: Array<ReactElement> = [];
+  let counter = 0;
   tags.forEach((tag) => {
     temp.push(
       <li
-        key={name + tag.id}
+        key={`${name}-${tag.name}-${counter}`}
         className={styles.tag}
       >
         {/* CREATE LINK TO SEARCH BY TAG */}
         <p>{tag.name}</p>
       </li>
     );
+    ++counter;
   });
   return temp;
 }
