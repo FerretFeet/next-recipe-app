@@ -10,6 +10,7 @@
 .inputTxt {
   margin: 1rem;
   padding: 0.5rem;
+  background-color: var(--color-white);
 }
 
 .inputBtn {
