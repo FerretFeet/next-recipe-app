@@ -1,4 +1,8 @@
 .container {
+  text-decoration: none;
+}
+
+.card {
   width: 320px;
   background-color: var(--color-prim);
   padding: 0.5rem 0;

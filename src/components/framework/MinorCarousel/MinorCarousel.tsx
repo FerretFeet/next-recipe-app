@@ -20,7 +20,7 @@ const Card = ({
 }: {
   content: IRecipe;
   idx: number;
-  onClick: () => void;
+  onClick?: () => void;
 }) => {
   let style = {};
 
@@ -107,7 +107,6 @@ export function MinorCarousel() {
           key={`${idx}-${item.id}`}
           content={item}
           idx={idx}
-          onClick={() => updateArr(idx)}
         />
       ))}
       <button
