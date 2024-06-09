@@ -1,0 +1,4 @@
+.container input,
+.container textarea {
+  background-color: var(--color-white);
+}
