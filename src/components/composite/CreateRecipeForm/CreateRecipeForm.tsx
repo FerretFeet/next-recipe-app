@@ -13,31 +13,55 @@ export default function CreateRecipeForm() {
     setInputs((prevState) => ({ ...prevState, [name]: value }));
     console.log(inputs);
   };
+  // @ts-expect-error
+  const validateImg = (e) => {
+    if (e.target.name.size > 50000000) {
+      return false;
+    }
+    // 50MB
+    handleChange(e);
+    // tinypng
+    return true;
+  };
+  const validateText = (e) => {
+    if (!e.target.value.match(/^[a-zA-Z&\-\(\)',; ]*$/)) {
+      return false;
+    }
+    handleChange(e);
+    return true;
+  };
   //@ts-expect-error
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(inputs);
+    alert({ ...inputs });
   };
   return (
     <div className={styles.container}>
       <form
-        action={`/`}
+        // action={`/`}
         method="post"
+        onSubmit={handleSubmit}
       >
         <div className="">
           <label htmlFor="rName">Recipe Name: </label>
+          {/* <p>Name contains invalid character(s) <br />
+          Allowed Characters:</p> 
+          <p>A-z <br />
+          &, -, (, ), ', ,</p>*/}
           <input
             id="recipe-name"
             type="text"
             name="name"
             onChange={handleChange}
             maxLength={32}
+            pattern="^[a-zA-Z&\-\(\)', ]*$"
             required
           />
         </div>
         <div className="">
           {/* could be user id */}
-          <label htmlFor="rUser">Username: </label>
+          {/* will eventually pull from cookie? */}
+          {/* <label htmlFor="rUser">Username: </label> */}
           <input
             id="user-name"
             type="text"
@@ -45,17 +69,20 @@ export default function CreateRecipeForm() {
             onChange={handleChange}
             maxLength={16}
             required
+            hidden
+            defaultValue={"baw"}
           />
         </div>
         <div className="">
           <label htmlFor="rImg">Image: </label>
+          <p className="">less than some amount of kb/mb</p>
           <input
             id="image"
             type="file"
             name="img"
             required
-
-            // accept=
+            accept=".jpeg, .jpg, .png, .webp"
+            onChange={validateImg}
           />
         </div>
         <div className="">
@@ -68,6 +95,7 @@ export default function CreateRecipeForm() {
             // What should this maxLength be
             maxLength={300}
             required
+            onChange={validateText}
           />
         </div>
         <div className="">
@@ -81,6 +109,7 @@ export default function CreateRecipeForm() {
             // What should this maxLength be
             maxLength={300}
             required
+            onChange={validateText}
           />
         </div>
 
@@ -125,6 +154,7 @@ export default function CreateRecipeForm() {
             type="text"
             name="ingredient"
             required
+            onChange={validateText}
           />
           {/* datalist for measurement unit pull from db */}
         </div>
