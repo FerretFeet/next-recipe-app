@@ -328,7 +328,8 @@ export default function CreateRecipeForm() {
             <input
               id="tags"
               type="text"
-              name={`tag-${index}`}
+              // name={`tag-${index}`}
+              name="tags"
               required
               pattern="^[a-zA-Z&\-\(\)', ]*$"
               onChange={(e) => handleInputChange(index, e)}
