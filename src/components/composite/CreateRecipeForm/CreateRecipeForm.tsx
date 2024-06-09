@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./CreateRecipeForm.module.css";
+import { getUnitNames } from "@/app/getUnitNames";
 
 export default function CreateRecipeForm() {
   const [inputs, setInputs] = useState({
@@ -13,9 +14,26 @@ export default function CreateRecipeForm() {
     // prepTime: null,
     // cookTime: null,
     // servings: null,
-    ingredients: [{ name: "", quantity: 0, unit: "" }],
+    ingredients: [{ name: "", quantity: 0, unit: { id: 0, name: "" } }],
     tags: [{ name: "" }],
   });
+  const [units, setUnits] = useState([{ id: 0, name: "" }]);
+  console.log("UNIT NAMES");
+
+  useEffect(() => {
+    const fetchUnits = async () => {
+      try {
+        const unitData = await getUnitNames();
+        setUnits(unitData);
+      } catch (err) {
+        console.error("Error in useEffect fetching unitData", err);
+        throw err;
+      }
+    };
+    fetchUnits();
+  }, []);
+
+  console.log(units);
 
   // @ts-expect-error
   const handleChange = (e) => {
@@ -69,7 +87,10 @@ export default function CreateRecipeForm() {
   const handleAddIngredient = () => {
     setInputs((prevState) => ({
       ...prevState,
-      ingredients: [...inputs.ingredients, { name: "", quantity: 0, unit: "" }],
+      ingredients: [
+        ...inputs.ingredients,
+        { name: "", quantity: 0, unit: { id: 0, name: "" } },
+      ],
     }));
   };
   const handleRemoveIngredient = () => {
@@ -284,7 +305,7 @@ export default function CreateRecipeForm() {
               <div className="">
                 <label htmlFor={`ingredient-unit-${index}`}>Unit:</label>
                 <input
-                  type="text"
+                  list="unit-names"
                   id={`ingredient-unit-${index}`}
                   // name={`ingr-unit-${1}`}
                   name="unit"
@@ -292,6 +313,14 @@ export default function CreateRecipeForm() {
                   pattern="^[a-zA-Z\-', ]*$"
                   onChange={(e) => handleIngredientInputChange(index, e)}
                 />
+                <datalist id="unit-names">
+                  {units.map((unit, index) => (
+                    <option
+                      key={index}
+                      value={unit.name}
+                    ></option>
+                  ))}
+                </datalist>
               </div>
             </div>
           ))}
@@ -319,35 +348,38 @@ export default function CreateRecipeForm() {
 
           {/* datalist for measurement unit pull from db */}
         </div>
-        {inputs.tags.map((tag, index) => (
-          <div
-            className=""
-            key={index}
+        <div className="">
+          <label htmlFor="tags">Tags: </label>
+
+          {inputs.tags.map((tag, index) => (
+            <div
+              className=""
+              key={index}
+            >
+              <input
+                id="tags"
+                type="text"
+                // name={`tag-${index}`}
+                name="tags"
+                required
+                pattern="^[a-zA-Z&\-\(\)', ]*$"
+                onChange={(e) => handleInputChange(index, e)}
+              />
+            </div>
+          ))}
+          <button
+            type="button"
+            onClick={handleAddTag}
           >
-            <label htmlFor="tags">Tags: </label>
-            <input
-              id="tags"
-              type="text"
-              // name={`tag-${index}`}
-              name="tags"
-              required
-              pattern="^[a-zA-Z&\-\(\)', ]*$"
-              onChange={(e) => handleInputChange(index, e)}
-            />
-          </div>
-        ))}
-        <button
-          type="button"
-          onClick={handleAddTag}
-        >
-          Add Tag
-        </button>
-        <button
-          type="button"
-          onClick={handleRemoveTag}
-        >
-          Remove Tag
-        </button>
+            Add Tag
+          </button>
+          <button
+            type="button"
+            onClick={handleRemoveTag}
+          >
+            Remove Tag
+          </button>
+        </div>
 
         <button type="submit">Submit</button>
       </form>
