@@ -2,6 +2,7 @@ import { useState } from "react";
 import HamburgerIcon from "../../base/HamburgerMenu/HamburgerIcon";
 import styles from "./SiteHeader.module.css";
 import SearchForm from "@/components/composite/SearchForm/SearchForm";
+import Link from "next/link";
 
 export function SiteHeader({ links }: { links: string[] }) {
   //   const [toggled, setToggled] = useState(false);
@@ -15,7 +16,12 @@ export function SiteHeader({ links }: { links: string[] }) {
   return (
     <header className={styles.hamburgerMenu}>
       <div className={styles.logo}>
-        <h5>EzG</h5>
+        <Link
+          href={"/"}
+          className={styles.logo}
+        >
+          <h5>EzG</h5>
+        </Link>
       </div>
       <div className={`${styles.bigNav}`}>
         <nav>
