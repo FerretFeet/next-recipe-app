@@ -8,7 +8,7 @@ import {
   testRecipe3,
   testRecipe4,
   testRecipe5,
-} from "@/utils/interfaces";
+} from "@/lib/utils/interfaces";
 import styles from "./MinorCarousel.module.css";
 import { ListrecipeCard } from "@/components/composite/ListRecipeCard/ListRecipeCard";
 import { useState } from "react";

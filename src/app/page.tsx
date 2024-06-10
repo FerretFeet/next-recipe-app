@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { testRecipe } from "@/utils/interfaces";
+import { testRecipe } from "@/lib/utils/interfaces";
 import { ListrecipeCard } from "@/components/composite/ListRecipeCard/ListRecipeCard";
 import { SiteHeader } from "@/components/framework/SiteHeader/SiteHeader";
 import { alegreya } from "@/fonts";

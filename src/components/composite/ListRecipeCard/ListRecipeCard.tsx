@@ -1,5 +1,5 @@
-import { IRecipe } from "@/utils/interfaces";
-import { createIconText, createTags } from "@/utils/uiFunctions";
+import { IRecipe } from "@/lib/utils/interfaces";
+import { createIconText, createTags } from "@/lib/utils/uiFunctions";
 import Image from "next/image";
 import styles from "./ListRecipeCard.module.css";
 

@@ -1,9 +1,9 @@
-import { toTitleCase } from "@/utils/functions";
-import { IRecipe, ITag } from "@/utils/interfaces";
+import { toTitleCase } from "@/lib/utils/functions";
+import { IRecipe, ITag } from "@/lib/utils/interfaces";
 import Image from "next/image";
 import styles from "./RecipeCard.module.css";
 import { ReactElement } from "react";
-import { createIconText, createTags } from "@/utils/uiFunctions";
+import { createIconText, createTags } from "@/lib/utils/uiFunctions";
 
 export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
   const {

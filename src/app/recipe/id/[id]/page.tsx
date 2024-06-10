@@ -1,10 +1,10 @@
 import { SiteHeader } from "@/components/framework/SiteHeader/SiteHeader";
-import { IIngredient, IRecipe, ITag, testRecipe } from "@/utils/interfaces";
+import { IIngredient, IRecipe, ITag, testRecipe } from "@/lib/utils/interfaces";
 import styles from "./page.module.css";
 import Image from "next/image";
-import { createIconText, createTags } from "@/utils/uiFunctions";
+import { createIconText, createTags } from "@/lib/utils/uiFunctions";
 import * as util from "util";
-import { parseIngredients, parseTags } from "@/utils/functions";
+import { parseIngredients, parseTags } from "@/lib/utils/functions";
 
 async function getData(id: number) {
   console.log(id);

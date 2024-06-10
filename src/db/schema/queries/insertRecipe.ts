@@ -1,5 +1,5 @@
 import db from "@/db/dbConfig";
-import { IRecipe } from "@/db/interfaces/interfaces";
+import { IRecipe } from "@/lib/utils/interfaces";
 import { error } from "console";
 import * as util from "util";
 
@@ -35,7 +35,7 @@ async function insertRecipe({
       serving_size,
       img,
     ]);
-    console.log(`Recipe successfully inserted: ${recipe.name}`);
+    console.log(`Recipe successfully inserted: ${recipe.name} ${recipe.id}`);
     return recipe;
   } catch (err) {
     console.error("Error inserting recipe", err);
@@ -91,7 +91,7 @@ async function selectOrInsertIngredient(name: string) {
   }
 }
 
-async function linkRecipeIngredient(id: number, name: string) {
+async function linkRecipeIngredient(id: number, recipeName: string) {
   const query1 = `
   SELECT id FROM ingredient
   WHERE name = $1
@@ -102,11 +102,10 @@ async function linkRecipeIngredient(id: number, name: string) {
   WHERE id = $1
   `;
   try {
-    const id = await db.any(query1, [name]);
-    console.log(id[0]);
-    console.log(`LINKRECIPEINGREDIENT ${!id[0]}`);
-    if (id[0]) {
-      await db.none(query2, [id, name]);
+    const ingrId = await db.any(query1, [recipeName]);
+    console.log(`LINKRECIPEINGREDIENT ${!ingrId[0].id}`);
+    if (ingrId[0]) {
+      await db.none(query2, [id, ingrId[0].id as Number]);
       console.log("linked ingredient to recipe");
       return true;
     }
@@ -209,6 +208,7 @@ export async function insertRecipeWithRelations({
   img,
 }: IRecipe) {
   // Format all inputs to lowercase
+  console.log(name);
   name = name.toLowerCase();
   description = description.toLowerCase();
   instructions = instructions.toLowerCase();

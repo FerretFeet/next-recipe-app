@@ -1,8 +1,8 @@
 import { SiteHeader } from "@/components/framework/SiteHeader/SiteHeader";
-import { IIngredient, IRecipe, testRecipe } from "@/utils/interfaces";
+import { IIngredient, IRecipe, testRecipe } from "@/lib/utils/interfaces";
 import styles from "./page.module.css";
 import Image from "next/image";
-import { createIconText, createTags } from "@/utils/uiFunctions";
+import { createIconText, createTags } from "@/lib/utils/uiFunctions";
 
 const test_recipe: IRecipe = testRecipe;
 

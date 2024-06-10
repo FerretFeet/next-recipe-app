@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import styles from "./CreateRecipeForm.module.css";
-import { getUnitNames } from "@/app/getUnitNames";
+import { getUnitNames } from "@/actions/getUnitNames";
 
 export default function CreateRecipeForm() {
   const [inputs, setInputs] = useState({
@@ -133,11 +133,54 @@ export default function CreateRecipeForm() {
     return true;
   };
   //@ts-expect-error
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    console.log("FORM SUBMIT DEBUG");
     e.preventDefault();
     // turn instructions from array into delimited string ';'
     // turn ingredients into obj arr', ; , , ;'
     // and tags obj arr
+    const formData = new FormData(e.currentTarget);
+    const name = formData.get("name");
+    const img = formData.get("img");
+    const prepTime = formData.get("prepTime");
+    const cookTime = formData.get("cookTime");
+    const servings = formData.get("servings");
+    const description = formData.get("description");
+    const userId = formData.get("userId");
+
+    const instructions = inputs.instructions.join(";");
+    const ingredients = inputs.ingredients;
+    // ingredient.unit is name, without id attached; may change
+    const tags = inputs.tags;
+
+    const data = {
+      name,
+      userId,
+      img,
+      prepTime,
+      cookTime,
+      servings,
+      instructions,
+      ingredients,
+      tags,
+      description,
+    };
+    console.log(data);
+
+    try {
+      const response = await fetch("http://localhost:3000//api/createRecipe", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        console.log(result);
+      }
+    } catch (err) {
+      console.error("Error Posting recipe: ", err);
+    }
     alert({ ...inputs });
   };
   return (
@@ -168,14 +211,14 @@ export default function CreateRecipeForm() {
           {/* will eventually pull from cookie? */}
           {/* <label htmlFor="rUser">Username: </label> */}
           <input
-            id="user-name"
+            id="user-id"
             type="text"
-            name="username"
-            onChange={handleChange}
+            name="userId"
             maxLength={16}
+            min={1}
             required
             hidden
-            defaultValue={"baw"}
+            defaultValue={1}
           />
         </div>
         <div className="">
@@ -213,7 +256,8 @@ export default function CreateRecipeForm() {
             <input
               id="instructions"
               type="text"
-              name={`instruction-${index}`}
+              // name={`instruction-${index}`}
+              name="instructions"
               // What should this maxLength be
               maxLength={120}
               required

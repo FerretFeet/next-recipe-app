@@ -1,6 +1,6 @@
 import { ListrecipeCard } from "@/components/composite/ListRecipeCard/ListRecipeCard";
-import { parseTags } from "@/utils/functions";
-import { IRecipe } from "@/utils/interfaces";
+import { parseTags } from "@/lib/utils/functions";
+import { IRecipe } from "@/lib/utils/interfaces";
 import styles from "./page.module.css";
 
 async function getData(search: string) {

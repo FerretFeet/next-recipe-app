@@ -11,7 +11,7 @@ import {
   testRecipe1,
   testRecipe2,
   testRecipe3,
-} from "@/utils/interfaces";
+} from "@/lib/utils/interfaces";
 import { useEffect, useRef, useState } from "react";
 
 const useInterval = (
