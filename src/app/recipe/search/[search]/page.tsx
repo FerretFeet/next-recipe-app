@@ -23,6 +23,7 @@ export default async function SearchPage({
 }: {
   params: { search: string };
 }) {
+  const title = params.search;
   const createRecipes = (recipes: any[]) => {
     return (
       <ul>
@@ -56,7 +57,12 @@ export default async function SearchPage({
     {
     }
 
-    return <div className="">{createRecipes(recipes)}</div>;
+    return (
+      <div className="">
+        <h4 className={styles.heading}>{title}</h4>
+        {createRecipes(recipes)}
+      </div>
+    );
   } catch (err) {
     console.error("Error fetching data:", err);
     return <div className="">Error fetching data. Please try again</div>;

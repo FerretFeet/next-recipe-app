@@ -1,6 +1,7 @@
 import { useState } from "react";
 import HamburgerIcon from "../../base/HamburgerMenu/HamburgerIcon";
 import styles from "./SiteHeader.module.css";
+import SearchForm from "@/components/composite/SearchForm/SearchForm";
 
 export function SiteHeader({ links }: { links: string[] }) {
   //   const [toggled, setToggled] = useState(false);
@@ -14,13 +15,11 @@ export function SiteHeader({ links }: { links: string[] }) {
   return (
     <header className={styles.hamburgerMenu}>
       <div className={styles.logo}>
-        <h5>Grocery App</h5>
+        <h5>EzG</h5>
       </div>
       <div className={`${styles.bigNav}`}>
         <nav>
-          <ol>
-            <li></li>
-          </ol>
+          <SearchForm />
         </nav>
       </div>
       <div className={styles.basket}>{/* button */}</div>
