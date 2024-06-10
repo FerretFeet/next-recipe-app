@@ -22,41 +22,40 @@ export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
   const fullCookTime = prep_time + cook_time;
 
   return (
-    <a
-      className={`${styles.container}`}
-      href={`http://localhost:3000/recipe/id/${id}`}
-    >
-      <div className={`${styles.card}`}>
-        <div className={styles.imgContainer}>
-          {img ? (
-            <Image
-              src={img}
-              alt={`A photo of ${name}`}
-              fill={true}
-            />
-          ) : (
-            <div></div>
-          )}
-        </div>
-        <div className={styles.heading}>
-          <h6 className={``}>{toTitleCase(name)}</h6>
-        </div>
-        <div className="">
-          <ul className={styles.tagsContainer}>
-            {tags ? createTags(name, tags) : <div></div>}
-          </ul>
-        </div>
-        <div className={styles.description}>
-          <p className="">{description}</p>
-        </div>
-        <div className={styles.iconText}>
-          {/* MATERIAL UI? ICON LIBRARY NEEDED */}
-          {createIconText("user.svg", user_name)}
-          {createIconText("star.svg", `${rating.toString()}/5`)}
-          {createIconText("fullCook.svg", `${fullCookTime.toString()} mins`)}
-          {createIconText("plate.svg", `${serving_size.toString()} servings`)}
-        </div>
+    <div className={`${styles.card}`}>
+      <div className={styles.imgContainer}>
+        {img ? (
+          <Image
+            src={img}
+            alt={`A photo of ${name}`}
+            fill={true}
+          />
+        ) : (
+          <div></div>
+        )}
       </div>
-    </a>
+      <div className={styles.heading}>
+        <h6 className={``}>{toTitleCase(name)}</h6>
+      </div>
+      <div className="">
+        <ul className={styles.tagsContainer}>
+          {tags ? createTags(name, tags) : <div></div>}
+        </ul>
+      </div>
+      <div className={styles.description}>
+        <p className="">{description}</p>
+      </div>
+      <div className={styles.iconText}>
+        {/* MATERIAL UI? ICON LIBRARY NEEDED */}
+        {user_name
+          ? createIconText("user.svg", user_name)
+          : createIconText("user.svg", "err")}
+        {rating
+          ? createIconText("star.svg", `${rating.toString()}/5`)
+          : createIconText("star.svg", ` `)}
+        {createIconText("fullCook.svg", `${fullCookTime.toString()} mins`)}
+        {createIconText("plate.svg", `${serving_size.toString()} servings`)}
+      </div>
+    </div>
   );
 }

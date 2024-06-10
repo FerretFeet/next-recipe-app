@@ -130,16 +130,36 @@ export default function FeaturedCarousel() {
 
   return (
     <div className={`${styles.container}`}>
-      {arr.map((item, idx) => (
-        <Card
-          key={`${counter}-${item.id}`}
-          content={item}
-          idx={idx}
-          onClick={() => updateArr(idx)}
-          onMouseEnter={() => setIsScrolling(false)}
-          onMouseLeave={() => setIsScrolling(true)}
-        />
-      ))}
+      {arr.map((item, idx) => {
+        if (idx === 1) {
+          const link = `/recipe/id/${item.id}`;
+          return (
+            <a
+              href={link}
+              key={`${counter}-${item.id}`}
+              className={styles.aTag}
+            >
+              <Card
+                content={item}
+                idx={idx}
+                onClick={() => updateArr(idx)}
+                onMouseEnter={() => setIsScrolling(false)}
+                onMouseLeave={() => setIsScrolling(true)}
+              />
+            </a>
+          );
+        }
+        return (
+          <Card
+            key={`${counter}-${item.id}`}
+            content={item}
+            idx={idx}
+            onClick={() => updateArr(idx)}
+            onMouseEnter={() => setIsScrolling(false)}
+            onMouseLeave={() => setIsScrolling(true)}
+          />
+        );
+      })}
     </div>
   );
 }

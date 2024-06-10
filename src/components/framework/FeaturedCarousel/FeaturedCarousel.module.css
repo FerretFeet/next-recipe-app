@@ -13,3 +13,7 @@
   width: 80%;
   max-width: var(--max-width);
 }
+
+.atag {
+  text-decoration: none;
+}
