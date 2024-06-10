@@ -12,7 +12,9 @@ const initOptions = {};
 const pgp = pgPromise({});
 
 //create a new db instance
-if (!connectionString) throw new Error("DBConnectionString is null");
+if (!connectionString) {
+  throw new Error("DBConnectionString is null");
+}
 const db = pgp(connectionString);
 
 export default db;

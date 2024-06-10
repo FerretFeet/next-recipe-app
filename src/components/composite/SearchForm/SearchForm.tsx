@@ -1,12 +1,11 @@
 "use client";
 import { useRef } from "react";
 import styles from "./SearchForm.module.css";
-import SearchFormHandler from "./SearchFormHandler";
+// import SearchFormHandler from "./SearchFormHandler";
 import router from "next/router";
+import Image from "next/image";
 
 export default function SearchForm() {
-  const formRef = useRef<HTMLFormElement>(null);
-  const textInputRef = useRef<HTMLInputElement>(null);
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
@@ -23,70 +22,31 @@ export default function SearchForm() {
       console.error("Error submitting search form", err);
     }
   };
-  //   @ts-ignore
-  const handleClick = (e) => {
-    if (formRef.current && textInputRef.current) {
-      //   const hiddenInput = document.createElement("input");
-      //   console.log(`HANDLE CLICK`);
-      //   hiddenInput.type = "hidden";
-      //   hiddenInput.name = "query";
-      //   hiddenInput.value = (e.target as HTMLInputElement).value;
-      //   formRef.current.appendChild(hiddenInput);
-      //   formRef.current.submit();
-      textInputRef.current.value = (e.target as HTMLInputElement).value;
-      const event = new Event("submit", { bubbles: true, cancelable: true });
-      formRef.current.dispatchEvent(event);
-      //   formRef.current.removeChild(hiddenInput);
-    }
-  };
+
   return (
-    <div className={`${styles.container}`}>
+    <div className={styles.container}>
       <form
-        ref={formRef}
         action="GET"
         onSubmit={handleSearch}
       >
-        <input
-          ref={textInputRef}
-          className={`${styles.inputTxt}`}
-          type="text"
-          name="query"
-        />
-        <input
-          className={`${styles.inputBtn}`}
-          type="button"
-          value="popular"
-          name="query"
-          onClick={handleClick}
-        />
-        <input
-          className={`${styles.inputBtn}`}
-          type="button"
-          value="most viewed"
-          name="query"
-          onClick={handleClick}
-        />
-        <input
-          className={`${styles.inputBtn}`}
-          type="button"
-          value="breakfast"
-          name="query"
-          onClick={handleClick}
-        />
-        <input
-          className={`${styles.inputBtn}`}
-          type="button"
-          value="italian"
-          name="query"
-          onClick={handleClick}
-        />
-        <input
-          className={`${styles.inputBtn}`}
-          type="button"
-          value="salad"
-          name="query"
-          onClick={handleClick}
-        />
+        <div className={styles.posContainer}>
+          <input
+            className={`${styles.inputTxt}`}
+            type="text"
+            name="query"
+          />
+          <button
+            type="submit"
+            className={styles.btn}
+          >
+            <Image
+              src="/"
+              width={16}
+              height={16}
+              alt=""
+            />
+          </button>
+        </div>
       </form>
     </div>
   );

@@ -1,20 +1,20 @@
-.container > form > input {
-  text-transform: capitalize;
+.container {
+  margin: 0.5rem;
 }
 
-.container {
-  background-color: var(--color-sec);
-  padding: 1rem;
+.posContainer {
+  display: inline-block;
+  position: relative;
+  width: fit-content;
 }
 
 .inputTxt {
-  margin: 1rem;
   padding: 0.5rem;
   background-color: var(--color-white);
 }
 
-.inputBtn {
-  background-color: var(--color-prim);
-  padding: 0.5rem;
-  margin: 0.5rem;
+.btn {
+  position: absolute;
+  right: 0.5rem;
+  top: calc(50% - 8px);
 }

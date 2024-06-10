@@ -1,13 +1,9 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { testRecipe } from "@/lib/utils/interfaces";
-import { ListrecipeCard } from "@/components/composite/ListRecipeCard/ListRecipeCard";
 import { SiteHeader } from "@/components/framework/SiteHeader/SiteHeader";
-import { alegreya } from "@/fonts";
 import Carousel from "@/components/framework/FeaturedCarousel/FeaturedCarousel";
-import RecipeCard from "@/components/composite/RecipeCard/RecipeCard";
 import { MinorCarousel } from "@/components/framework/MinorCarousel/MinorCarousel";
-import SearchForm from "@/components/composite/SearchForm/SearchForm";
+import SearchBar from "@/components/framework/SearchBar/SearchBar";
 
 export default function Home() {
   let testLinks: string[] = ["home", "about"];
@@ -17,7 +13,6 @@ export default function Home() {
         aria-label="page header"
         className={styles.body}
       >
-        <SiteHeader links={testLinks} />
         <div className={styles.hero}>
           <div className={styles.hImg}>
             <Image
@@ -58,7 +53,7 @@ export default function Home() {
         className={`${styles.moreRecipes}`}
       >
         <h5 className="">Search</h5>
-        <SearchForm />
+        <SearchBar />
         {/* SEARCH BAR */}
         {/* Many Minor Carousels showing categories */}
         <h5 className={styles.catHeader}>Category</h5>

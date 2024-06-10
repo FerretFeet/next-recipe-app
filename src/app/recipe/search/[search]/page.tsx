@@ -24,11 +24,6 @@ export default async function SearchPage({
 }: {
   params: { search: string };
 }) {
-  const recipes = await getData(params.search);
-  recipes.forEach((recipe: any) => {
-    recipe.tags ? (recipe.tags = parseTags(recipe.tags)) : "";
-    console.log(recipe);
-  });
   const createRecipes = (recipes: any[]) => {
     console.log(`SSSSSSSEARCH PAGE`);
     return (
@@ -54,9 +49,20 @@ export default async function SearchPage({
       </ul>
     );
   };
-  {
-    console.log(createRecipes(recipes));
-  }
+  try {
+    const recipes = await getData(params.search);
+    recipes.forEach((recipe: any) => {
+      recipe.tags ? (recipe.tags = parseTags(recipe.tags)) : "";
+      console.log(recipe);
+    });
 
-  return <div className="">{createRecipes(recipes)}</div>;
+    {
+      console.log(createRecipes(recipes));
+    }
+
+    return <div className="">{createRecipes(recipes)}</div>;
+  } catch (err) {
+    console.error("Error fetching data:", err);
+    return <div className="">Error fetching data. Please try again</div>;
+  }
 }
