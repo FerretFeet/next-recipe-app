@@ -101,10 +101,13 @@ async function linkRecipeIngredient(id: number, recipeName: string) {
   SET recipe_id = $2
   WHERE id = $1
   `;
+  console.log(`LINKRECIPE FUNCTION ${id}, ${recipeName}`);
+  const testingrId = await db.any(query1, [recipeName]);
+
   try {
     const ingrId = await db.any(query1, [recipeName]);
-    console.log(`LINKRECIPEINGREDIENT ${!ingrId[0].id}`);
     if (ingrId[0]) {
+      console.log(`LINKRECIPEINGREDIENT ${!ingrId[0].id}`);
       await db.none(query2, [id, ingrId[0].id as Number]);
       console.log("linked ingredient to recipe");
       return true;
@@ -216,7 +219,7 @@ export async function insertRecipeWithRelations({
     (ingredient) => (ingredient.name = ingredient.name.toLowerCase())
   );
   tags?.forEach((tag) => (tag.name = tag.name.toLowerCase()));
-
+  console.log("INSERTRECIPE.ts DEBUG");
   try {
     const recipe = await insertRecipe({
       name,
@@ -257,6 +260,8 @@ export async function insertRecipeWithRelations({
     recipe.tags = tags;
 
     try {
+      console.log(recipe.id);
+      console.log(recipe.name);
       await linkRecipeIngredient(recipe.id, recipe.name);
     } catch (err) {
       console.error("no matching ingredient for recipe", err);

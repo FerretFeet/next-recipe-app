@@ -10,7 +10,7 @@ export default function CreateRecipeForm() {
     // username: null,
     img: null,
     description: "",
-    instructions: [""],
+    instructions: [{ name: "" }],
     // prepTime: null,
     // cookTime: null,
     // servings: null,
@@ -45,7 +45,7 @@ export default function CreateRecipeForm() {
   const handleAddInstruction = () => {
     setInputs((prevState) => ({
       ...prevState,
-      instructions: [...inputs.instructions, ""],
+      instructions: [...inputs.instructions, { name: "" }],
     }));
   };
   const handleRemoveInstruction = () => {
@@ -148,7 +148,9 @@ export default function CreateRecipeForm() {
     const description = formData.get("description");
     const userId = formData.get("userId");
 
-    const instructions = inputs.instructions.join(";");
+    const instructions = inputs.instructions.map((item) => item.name).join(";");
+    console.log("RECIPE FORM DEBUG");
+    console.log(instructions);
     const ingredients = inputs.ingredients;
     // ingredient.unit is name, without id attached; may change
     const tags = inputs.tags;
@@ -165,7 +167,6 @@ export default function CreateRecipeForm() {
       tags,
       description,
     };
-    console.log(data);
 
     try {
       const response = await fetch("http://localhost:3000//api/createRecipe", {

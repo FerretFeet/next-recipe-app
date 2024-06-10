@@ -80,9 +80,15 @@ export const POST = async (req: NextRequest) => {
       img: r.img,
     });
     console.log(newRecipe);
-    return new NextResponse("recipe created successfully", { status: 201 });
   } catch (error) {
     console.error("Error creating recipe:", error);
-    return new NextResponse("Internal server error", { status: 500 });
+    return NextResponse.json("Internal server error", { status: 500 });
+  } finally {
+    return NextResponse.json(
+      { message: "recipe created successfully" },
+      {
+        status: 201,
+      }
+    );
   }
 };
