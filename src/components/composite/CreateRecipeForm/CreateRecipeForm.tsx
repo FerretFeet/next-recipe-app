@@ -18,7 +18,6 @@ export default function CreateRecipeForm() {
     tags: [{ name: "" }],
   });
   const [units, setUnits] = useState([{ id: 0, name: "" }]);
-  console.log("UNIT NAMES");
 
   useEffect(() => {
     const fetchUnits = async () => {
@@ -33,14 +32,11 @@ export default function CreateRecipeForm() {
     fetchUnits();
   }, []);
 
-  console.log(units);
-
   // @ts-expect-error
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     setInputs((prevState) => ({ ...prevState, [name]: value }));
-    console.log({ ...inputs });
   };
   const handleAddInstruction = () => {
     setInputs((prevState) => ({
@@ -59,14 +55,11 @@ export default function CreateRecipeForm() {
   const handleInputChange = (index, e) => {
     // @ts-expect-error
     const newInstructions = [...inputs[e.target.name]];
-    console.log(`handleINPUT debug ${newInstructions}`);
     newInstructions[index] = { name: e.target.value };
     setInputs((prevState) => ({
       ...prevState,
       [e.target.name]: newInstructions,
     }));
-    // @ts-expect-error
-    console.log(inputs[e.target.name]);
   };
   // @ts-expect-error
   const handleIngredientInputChange = (index, e) => {
@@ -82,7 +75,6 @@ export default function CreateRecipeForm() {
       ...prevState,
       ingredients: newIngredients,
     }));
-    console.log(inputs.ingredients);
   };
   const handleAddIngredient = () => {
     setInputs((prevState) => ({
@@ -134,7 +126,6 @@ export default function CreateRecipeForm() {
   };
   //@ts-expect-error
   const handleSubmit = async (e) => {
-    console.log("FORM SUBMIT DEBUG");
     e.preventDefault();
     // turn instructions from array into delimited string ';'
     // turn ingredients into obj arr', ; , , ;'
@@ -149,8 +140,6 @@ export default function CreateRecipeForm() {
     const userId = formData.get("userId");
 
     const instructions = inputs.instructions.map((item) => item.name).join(";");
-    console.log("RECIPE FORM DEBUG");
-    console.log(instructions);
     const ingredients = inputs.ingredients;
     // ingredient.unit is name, without id attached; may change
     const tags = inputs.tags;
@@ -177,7 +166,6 @@ export default function CreateRecipeForm() {
 
       if (response.ok) {
         const result = await response.json();
-        console.log(result);
       }
     } catch (err) {
       console.error("Error Posting recipe: ", err);

@@ -4,7 +4,6 @@ import { IRecipe } from "@/lib/utils/interfaces";
 import styles from "./page.module.css";
 
 async function getData(search: string) {
-  console.log(`GET DATA ${search}`);
   try {
     const res = await fetch(
       `http://localhost:3000/api/recipe/search/${search}`
@@ -25,7 +24,6 @@ export default async function SearchPage({
   params: { search: string };
 }) {
   const createRecipes = (recipes: any[]) => {
-    console.log(`SSSSSSSEARCH PAGE`);
     return (
       <ul>
         {recipes.map((recipe: any, idx: any) => {
@@ -53,11 +51,9 @@ export default async function SearchPage({
     const recipes = await getData(params.search);
     recipes.forEach((recipe: any) => {
       recipe.tags ? (recipe.tags = parseTags(recipe.tags)) : "";
-      console.log(recipe);
     });
 
     {
-      console.log(createRecipes(recipes));
     }
 
     return <div className="">{createRecipes(recipes)}</div>;

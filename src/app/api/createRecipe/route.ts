@@ -11,7 +11,6 @@ export const POST = async (req: NextRequest) => {
       { status: 405 }
     );
   }
-  console.log("INSERTRECIPE ROUTE");
   const body = await req.json();
   const {
     name,
@@ -25,8 +24,6 @@ export const POST = async (req: NextRequest) => {
     ingredients,
     instructions,
   } = body;
-  console.log(body);
-  console.log(name);
 
   //   ADD CHECK MAKE SURE CORRECTLY FORMATTED
   const formattedTags = tags;
@@ -46,8 +43,6 @@ export const POST = async (req: NextRequest) => {
     ingredients: formattedIngredients,
     tags: formattedTags,
   };
-  console.log(r.name);
-  console.log(r.instructions);
   // Validate data
   const validationError = validateRecipeData({
     name: r.name,
@@ -79,7 +74,6 @@ export const POST = async (req: NextRequest) => {
       tags: r.tags,
       img: r.img,
     });
-    console.log(newRecipe);
   } catch (error) {
     console.error("Error creating recipe:", error);
     return NextResponse.json("Internal server error", { status: 500 });
