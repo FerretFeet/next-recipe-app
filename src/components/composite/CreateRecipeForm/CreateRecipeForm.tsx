@@ -18,6 +18,7 @@ export default function CreateRecipeForm() {
     tags: [{ name: "" }],
   });
   const [units, setUnits] = useState([{ id: 0, name: "" }]);
+  const [result, setResult] = useState("");
 
   useEffect(() => {
     const fetchUnits = async () => {
@@ -130,7 +131,8 @@ export default function CreateRecipeForm() {
     // turn instructions from array into delimited string ';'
     // turn ingredients into obj arr', ; , , ;'
     // and tags obj arr
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const name = formData.get("name");
     const img = formData.get("img");
     const prepTime = formData.get("prepTime");
@@ -165,7 +167,9 @@ export default function CreateRecipeForm() {
       });
 
       if (response.ok) {
-        const result = await response.json();
+        const temp = await response.json();
+        setResult(temp.message);
+        form.reset();
       }
     } catch (err) {
       console.error("Error Posting recipe: ", err);
@@ -174,6 +178,7 @@ export default function CreateRecipeForm() {
   };
   return (
     <div className={styles.container}>
+      <p className={``}>{result}</p>
       <form
         // action={`/`}
         method="post"

@@ -7,7 +7,6 @@ import * as util from "util";
 import { parseIngredients, parseTags } from "@/lib/utils/functions";
 
 async function getData(id: number) {
-  console.log(id);
   try {
     const res = await fetch(`http://localhost:3000/api/recipe/id/${id}`);
 
