@@ -1,4 +1,5 @@
-import db from "@/db/dbConfig";
+import { getDB } from "@/db/dbConfig";
+const { db, pgp } = getDB();
 
 export async function selectAllUnits() {
   const units = await db.many(`SELECT * FROM unit`);

@@ -1,4 +1,5 @@
-// import db from "@/db/dbConfig";
+// import { getDB } from "@/db/dbConfig";
+// const { db, pgp } = getDB();
 
 // async function selectPopularRecipes(page: number, limit: number) {
 //   // QUERIES

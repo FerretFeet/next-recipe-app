@@ -1,7 +1,8 @@
-import db from "@/db/dbConfig";
 import { IRecipe } from "@/lib/utils/interfaces";
 import { error } from "console";
 import * as util from "util";
+import { getDB } from "@/db/dbConfig";
+const { db, pgp } = getDB();
 
 interface IRecipeTransaction {
   many(query: string, values?: any[]): Promise<void>; // For queries that don't return data

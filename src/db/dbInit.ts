@@ -1,8 +1,9 @@
-import db from "./dbConfig";
 import fs from "fs";
 import { insertRecipeWithRelations } from "./schema/queries/insertRecipe";
 import { testRecipes } from "./seed-data";
 import { IRecipe } from "./interfaces/interfaces";
+import { getDB } from "@/db/dbConfig";
+const { db, pgp } = getDB();
 
 // //bootstrap DB so we can drop and reset when wanted
 // import pgPromise from "pg-promise";

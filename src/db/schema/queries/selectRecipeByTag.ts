@@ -1,5 +1,5 @@
-import db from "@/db/dbConfig";
-import * as util from "util";
+import { getDB } from "@/db/dbConfig";
+const { db, pgp } = getDB();
 
 export async function RecipeByTag(
   tag: string,

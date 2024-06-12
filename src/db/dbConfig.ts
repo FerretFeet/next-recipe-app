@@ -1,20 +1,31 @@
 //load and initialize the library
-import pgPromise from "pg-promise";
+import { createSingleton } from "@/lib/utils/singletonCreator";
+import pgLib from "pg-promise";
 // const pgp = require('pg-promise')()
 // import pgp from "pg-promise";
-const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+// const DB_CONNECTION_STRING = process.env.DB_CONNECTION_STRING;
+
+interface IDatabaseScope {
+  db: pgLib.IDatabase<any>;
+  pgp: pgLib.IMain;
+}
 
 //prepare connection details
-const connectionString = DB_CONNECTION_STRING;
+const connectionString = process.env.DB_CONNECTION_STRING;
 
 const initOptions = {};
 
-const pgp = pgPromise({});
+const pgp = pgLib(initOptions);
 
-//create a new db instance
-if (!connectionString) {
-  throw new Error("DBConnectionString is null");
+export function getDB(): IDatabaseScope {
+  return createSingleton<IDatabaseScope>("my-db-space", () => {
+    if (connectionString) {
+      return {
+        db: pgp(connectionString),
+        pgp,
+      };
+    } else {
+      throw Error("DB Connection string null");
+    }
+  });
 }
-const db = pgp(connectionString);
-
-export default db;
