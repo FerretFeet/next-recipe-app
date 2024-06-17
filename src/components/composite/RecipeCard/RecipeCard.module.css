@@ -52,7 +52,7 @@
   top: 2rem;
 }
 
-/* .imgInfo {
+.imgInfo {
   position: absolute;
   display: grid;
   padding: ;
@@ -62,17 +62,12 @@
   height: 100%;
   color: var(--color-white);
   align-items: flex-end;
-  justify-content: flex-end;
-} */
+}
 
 .imgLeftInfo {
 }
 
 .imgRightInfo {
-  position: absolute;
-  bottom: 0rem;
-  right: 0rem;
-  color: var(--color-white);
   padding: 1rem;
 }
 .imgRightInfo > * {
@@ -122,11 +117,5 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-  }
-
-  .img,
-  .imgContainer,
-  .imgShade {
-    border-radius: 16px 0 0 16px;
   }
 }
