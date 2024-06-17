@@ -37,6 +37,7 @@ export default function Home() {
         className={styles.explainer}
       >
         <h3>How It Works:</h3>
+
         <ol className={styles.explanation}>
           <li>Add recipes and food items to your basket</li>
           <li>View and adjust items in your grocery basket</li>

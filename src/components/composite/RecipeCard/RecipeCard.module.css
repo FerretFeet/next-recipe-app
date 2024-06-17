@@ -1,78 +1,132 @@
 .container {
-  /* container-type: size;
-  container-name: card; */
-  /* display: grid; */
-  padding: 1rem;
-  text-decoration: none;
+  width: clamp(320px, 50%, 480px);
+  border-radius: 16px;
+  background-color: var(--color-prim);
+  box-shadow: 1px 1px 1px 1px;
 }
 
-.card {
-  display: grid;
-  max-width: 1080px;
-  background-color: var(--color-prim);
-  padding: 0.5rem;
-  border-radius: var(--border-radius);
-  box-shadow: 1px 1px 4px;
+.headContainer {
 }
 
 .imgContainer {
-  margin: 0 auto;
-  height: clamp(160px, 30vmax, 540px);
-  width: 100%;
   position: relative;
+  height: 100%;
 }
-.imgContainer > Image {
+
+.img {
   width: 100%;
-  height: auto;
-  object-fit: cover;
+  min-height: 100%;
   position: absolute;
+  border-radius: 16px 16px 0 0;
 }
 
-.heading {
-  margin: 1rem;
-  padding: 0;
-  text-align: center;
+.imgShade {
+  min-height: 100%;
+  width: 100%;
+  background-color: var(--color-black);
+  opacity: 60%;
+  border-radius: 16px 16px 0 0;
 }
 
-.heading h6 {
-  margin: 0;
+.imgShade:hover {
+  opacity: 80%;
+}
+
+.recipeLink {
+  opacity: 0;
+  color: var(--color-white);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.recipeLink:hover {
+  opacity: 100%;
+}
+
+.recipeLink a {
+  position: absolute;
+  left: calc(50% - 7rem);
+  top: 2rem;
+}
+
+/* .imgInfo {
+  position: absolute;
+  display: grid;
+  padding: ;
+  grid-template-columns: 1fr 1fr;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--color-white);
+  align-items: flex-end;
+  justify-content: flex-end;
+} */
+
+.imgLeftInfo {
+}
+
+.imgRightInfo {
+  position: absolute;
+  bottom: 0rem;
+  right: 0rem;
+  color: var(--color-white);
+  padding: 1rem;
+}
+.imgRightInfo > * {
+  /* height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column; */
+  margin-top: 0.5rem;
+}
+
+.mainContainer {
+  padding: 1rem 0;
+}
+
+.mainContainer > * {
+  padding: 1rem;
+}
+
+.title a {
+  text-decoration: none;
 }
 
 .tagsContainer {
   display: flex;
-  width: 90%;
-  margin: auto;
-  padding: 0.5rem;
-  gap: 0.5rem;
-  justify-content: center;
   flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .description {
-  margin: 1rem;
-  text-align: justify;
 }
 
-.iconText {
-  margin: 2rem 0.5rem 1rem 0.5rem;
+.button {
+  background-color: var(--color-sec);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem auto;
   display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 
-@media screen and (min-width: 800px) {
-  .card {
+.button:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 900px) {
+  .container {
+    width: clamp(900px, 100%, 1440px);
     display: grid;
-    grid-template-columns: 4fr 3fr;
-    align-items: center;
-    grid-column-gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
   }
-  .imgContainer {
-    grid-column-start: 1;
-    grid-column-end: 1;
-    grid-row-start: 1;
-    grid-row-end: 5;
-    height: 100%;
+
+  .img,
+  .imgContainer,
+  .imgShade {
+    border-radius: 16px 0 0 16px;
   }
 }

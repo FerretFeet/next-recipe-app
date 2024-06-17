@@ -13,7 +13,7 @@ export function createTags(name: string, tags: ITag[]) {
         className={styles.tag}
       >
         {/* CREATE LINK TO SEARCH BY TAG */}
-        <p>{tag.name}</p>
+        <a href={`/recipe/search/${tag.name.toLowerCase()}`}>{tag.name}</a>
       </li>
     );
     ++counter;

@@ -23,7 +23,7 @@ export interface IRecipe {
   rating?: number;
   ingredients?: Array<IIngredient>;
   tags?: Array<ITag>;
-  img?: string;
+  img: string;
 }
 
 export const testRecipe: IRecipe = {
