@@ -1,0 +1,25 @@
+.container {
+  height: 800px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.posContainer {
+  position: absolute;
+}
+
+.cardBig {
+  height: 36rem;
+  max-height: 720px;
+  width: 67.5rem;
+}
+
+.cardSmall {
+  height: 34.375rem;
+  max-height: 550px;
+  width: 30rem;
+}
+
+.cardBig,
+.cardSmall {
+}

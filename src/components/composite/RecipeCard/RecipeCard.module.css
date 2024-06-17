@@ -58,7 +58,7 @@
 .recipeLink a {
   position: absolute;
   left: calc(50% - 7rem);
-  top: 2rem;
+  top: calc(50% - 3rem);
 }
 
 /* .imgInfo {
@@ -100,6 +100,11 @@
   padding: 1rem;
 }
 
+.title {
+  text-align: center;
+  padding: 1rem 4rem 2rem 4rem;
+}
+
 .title a {
   text-decoration: none;
 }
@@ -129,7 +134,7 @@
   .innerContainer {
     /* width: clamp(900px, 100%, 1440px); */
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 3fr 2fr;
     gap: 2rem;
     height: 100%;
   }

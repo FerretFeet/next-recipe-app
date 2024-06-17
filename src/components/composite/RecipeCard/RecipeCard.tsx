@@ -73,39 +73,5 @@ export default function RecipeCard({ recipe }: { recipe: IRecipe }) {
         </div>
       </div>
     </div>
-    // <div className={`${styles.card}`}>
-    //   <div className={styles.imgContainer}>
-    //     <div className={styles.imgShade}>
-    //       {img ? (
-    //         <Image
-    //           src={img}
-    //           alt={`A photo of ${name}`}
-    //           fill={true}
-    //         />
-    //       ) : (
-    //         <div></div>
-    //       )}
-    //     </div>
-    //     <div className={styles.imgDetails}>
-    //       <div className={styles.imgDetailsLeft}> {/* Rating */}</div>
-    //       <div className={styles.imgDetailsRight}>
-    //         {createIconText("fullCook.svg", `${fullCookTime.toString()} mins`)}
-    //         {user_name
-    //           ? createIconText("user.svg", user_name)
-    //           : createIconText("user.svg", "err")}
-    //       </div>
-    //     </div>
-    //   </div>
-    //   <div className={styles.heading}>
-    //     <h6 className={``}>{toTitleCase(name)}</h6>
-    //   </div>
-    //   <div className="">
-    //     <ul className={styles.tagsContainer}>
-    //       {tags ? createTags(name, tags) : <div></div>}
-    //     </ul>
-    //   </div>
-    //   <div className={styles.description}>
-    //   </div>
-    // </div>
   );
 }
